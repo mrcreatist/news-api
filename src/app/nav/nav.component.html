@@ -1,3 +1,26 @@
-<p>
-  nav works!
-</p>
+<i class="material-icons">menu</i>
+<!-- <img src="assets/material-icons/outline-settings-24px.svg"> -->
+
+<div class="choice">
+  <select (change)="setSource($event)">
+    <option *ngFor="let item of sources" [(value)]="item.id">{{item.name}}</option>
+  </select>
+</div>
+
+<div class="news_item_container" *ngIf="showNews">
+  <div class="news_item" *ngFor="let post of posts; let i=index;">
+    <span *ngIf="showPost(post, i)" (click)="gotoLink(post.url)">
+      <img src="{{post.urlToImage === null ? 'assets/default.png' : post.urlToImage}}">
+      <div>
+        <p class="content">{{post.title | ellipsis : 50}}</p>
+        <span class="bottom_section">
+          <p class="source">{{post.source.name}}</p>
+          <p class="publish_date">
+            {{post.publishedAt.split('T')[0].split('-')[0]}}/{{post.publishedAt.split('T')[0].split('-')[1]}}/{{post.publishedAt.split('T')[0].split('-')[2]}}</p>
+        </span>
+      </div>
+    </span>
+    <span class="bottom-border" *ngIf="post.title !== null"></span>
+
+  </div>
+</div>

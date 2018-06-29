@@ -6,15 +6,19 @@ import { AppComponent } from './app.component';
 import { NavComponent } from './nav/nav.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
+import { HttpClientModule } from '@angular/common/http';
+import { EllipsisPipe } from './common/ellipsis';
 
 @NgModule({
   declarations: [
     AppComponent,
-    NavComponent
+    NavComponent,
+    EllipsisPipe
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule  ,
     ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [],

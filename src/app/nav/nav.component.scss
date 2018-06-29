@@ -1,0 +1,107 @@
+.app-nav {
+
+  .choice {
+    select {
+      padding: 6px;
+      border-radius: 6px;
+      margin: 1em;
+    }
+  }
+  .news_item_container {
+    padding: 0;
+
+    .news_item {
+
+      span {
+        display: flex;
+        flex-direction: row;
+        margin-top: 0;
+        margin-bottom: 0;
+        padding-bottom: 1em;
+        padding: 1em;
+        transition: 1s;
+
+        img {
+          flex: 1;
+          background-image: url('/assets/default.png');
+          background-size: 100%;
+          width: 100px;
+          height: 100px;
+          object-fit: cover;
+          border-radius: 8px;
+          filter: drop-shadow(0px 6px 6px #cccccc);
+          margin: 0;
+          margin-top: 5px;
+          margin-bottom: 0;
+          transition: 0.2s;
+
+          &::before{
+            content: 'image loading';
+            background-image: url('/src/assets/default.png');
+          }
+        }
+
+        div {
+          margin-left: 1em;
+          flex: 2;
+          width: 100%;
+          display: grid;
+          grid-template-rows: 1fr 1fr;
+
+          .content {
+            margin: 0;
+          }
+
+          .bottom_section {
+            display: flex;
+            flex-wrap: wrap;
+            flex-direction: row;
+            justify-content: space-between;
+            font-weight: bold;
+            align-items: center;
+            margin: 0;
+            padding: 0;
+
+            .source {
+              margin: 0;
+              text-transform: uppercase;
+              background-color: yellow;
+            }
+            .publish_date {
+              margin: 0;
+              font-size: 12px;
+
+            }
+          }
+        }
+        &:hover {
+          cursor: pointer;
+          background-color: #f3f3f3;
+
+          img {
+            margin: 0;
+            margin-bottom: 5px;
+          }
+        }
+      }
+      .bottom-border{
+        margin: 0;
+        padding: 0;
+        border-bottom: 1px solid #cccccc;
+      }
+    }
+  }
+
+  @media screen and (min-width: 400px) {
+    .news_item_container {
+      .news_item {
+        span{
+          img {
+            width: 150px;
+            height: 150px;
+          }
+        }
+      }
+    }
+  }
+}

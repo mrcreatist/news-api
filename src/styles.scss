@@ -1,1 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
+@import "app/app.component";
+@import url('https://fonts.googleapis.com/css?family=Playfair+Display');
+
+body {
+  font-family: 'Playfair Display', serif;
+  margin: 0;
+}
