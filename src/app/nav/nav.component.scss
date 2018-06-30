@@ -1,10 +1,15 @@
 .app-nav {
 
   .choice {
+    display: flex;
+    flex-direction: row;
     select {
       padding: 6px;
-      border-radius: 6px;
+      flex: 1;
+      width: 100%;
       margin: 1em;
+      border: 0;
+      border-bottom: 1px solid black;
     }
   }
   .news_item_container {
@@ -25,6 +30,7 @@
           flex: 1;
           background-image: url('/assets/default.png');
           background-size: 100%;
+          background-position: center;
           width: 100px;
           height: 100px;
           object-fit: cover;
@@ -41,7 +47,7 @@
           }
         }
 
-        div {
+        .content_holder {
           margin-left: 1em;
           flex: 2;
           width: 100%;
@@ -61,11 +67,14 @@
             align-items: center;
             margin: 0;
             padding: 0;
+            transition: 0.2s;
+            background-color: transparent;
 
             .source {
               margin: 0;
               text-transform: uppercase;
               background-color: yellow;
+              padding: 0 3px;
             }
             .publish_date {
               margin: 0;
@@ -77,10 +86,16 @@
         &:hover {
           cursor: pointer;
           background-color: #f3f3f3;
-
+          // background: linear-gradient(to bottom right, white, red);
           img {
             margin: 0;
             margin-bottom: 5px;
+          }
+          .content_holder {
+            .bottom_section {
+              margin-top: 10px;
+              background: none;
+            }
           }
         }
       }

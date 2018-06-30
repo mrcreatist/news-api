@@ -8,12 +8,14 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { HttpClientModule } from '@angular/common/http';
 import { EllipsisPipe } from './common/ellipsis';
+import { FeedComponent } from './feed/feed.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavComponent,
-    EllipsisPipe
+    EllipsisPipe,
+    FeedComponent
   ],
   imports: [
     BrowserModule,

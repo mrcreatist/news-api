@@ -1,14 +1,17 @@
 import { NewsApiService } from './news-api.service';
 import { Component, OnInit, HostBinding } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { SwPush } from '@angular/service-worker';
 
 @Component({
-  selector: "app-nav",
-  templateUrl: "./nav.component.html",
-  styleUrls: ["./nav.component.scss"]
+  selector: 'app-nav',
+  templateUrl: './nav.component.html',
+  styleUrls: ['./nav.component.scss']
 })
 export class NavComponent implements OnInit {
-  @HostBinding("class") NavComponentClass = "app-nav";
+  @HostBinding('class') NavComponentClass = 'app-nav';
+
+  readonly VAPID_PUBLIC_KEY = 'BIjq7HbZjhwdlkdzIb1SCYG3a9YEyxwN22A3S_PTWcZQSNppM0_TrLe0QGm_t39j4QVJBJe-Yg6jD2z29yuLY6k';
 
   readonly COUNTRY_API_URL = `https://restcountries.eu/rest/v2/alpha`;
   private _COUNTRY_URL_TYPE = `codes`;
@@ -16,16 +19,21 @@ export class NavComponent implements OnInit {
   posts = [];
   sources = [];
   sourceCountries = [];
+  sourceListByCountry = [];
   showNews = false;
 
-  private _search = "";
-  private _source = "the-verge";
-  private _language = "en";
-  private _sortBy = "publishedAt";
-  private _pageSize = 20;
+  private _search = 'microsoft';
+  private _source = '';
+  private _language = 'en';
+  private _sortBy = 'publishedAt';
+  private _pageSize = 10;
   private _page = 1;
 
-  constructor(private _http: HttpClient, private _newsapi: NewsApiService) {}
+  constructor(
+    private _http: HttpClient,
+    private _newsapi: NewsApiService,
+    private swPush: SwPush,
+  ) {}
 
   ngOnInit() {
     this.getSourceList();
@@ -35,12 +43,12 @@ export class NavComponent implements OnInit {
   getPosts() {
     this._newsapi.resetrequestParameter();
 
-    this._newsapi.setParam("q", this.getSearch());
-    this._newsapi.setParam("sources", this.getSource());
-    this._newsapi.setParam("language", this.getLanguage());
-    this._newsapi.setParam("sortBy", this.getSortBy());
-    this._newsapi.setParam("pageSize", this.getPageSize());
-    this._newsapi.setParam("page", this.getPage());
+    this._newsapi.setParam('q', this.getSearch());
+    this._newsapi.setParam('sources', this.getSource());
+    this._newsapi.setParam('language', this.getLanguage());
+    this._newsapi.setParam('sortBy', this.getSortBy());
+    this._newsapi.setParam('pageSize', this.getPageSize());
+    this._newsapi.setParam('page', this.getPage());
 
     const url = this._newsapi.requestUrl();
     this._http.get(url).subscribe(
@@ -49,10 +57,10 @@ export class NavComponent implements OnInit {
         this.showNews = true;
       },
       (err: any) => {
-        console.log("GENERATING ERROR REPORT");
-        console.log("Content-type:", this._newsapi.getContentType());
-        console.log("Params", this._newsapi.getParam());
-        console.log("Parameters", this._newsapi.getRequestParameter());
+        console.log('GENERATING ERROR REPORT');
+        console.log('Content-type:', this._newsapi.getContentType());
+        console.log('Params', this._newsapi.getParam());
+        console.log('Parameters', this._newsapi.getRequestParameter());
         console.log(err);
       }
     );
@@ -62,7 +70,7 @@ export class NavComponent implements OnInit {
     this._http.get(this._newsapi.getSourcesList()).subscribe(
       (res: any) => {
         for (const src of res.sources) {
-          if (src.country === "zh") {
+          if (src.country === 'zh') {
             continue;
           }
           this.sources.push({
@@ -72,9 +80,11 @@ export class NavComponent implements OnInit {
             language: src.language,
             country: src.country
           });
+
+          // SETTING COUNTRY LIST
           if (!this.countryExists(src.country)) {
             this.sourceCountries.push({
-              name: "",
+              name: '',
               code: src.country
             });
           }
@@ -130,6 +140,7 @@ export class NavComponent implements OnInit {
 
   gotoLink(link) {
     // window.location.href = link;
+    window.open(link, '_blank');
   }
 
   showPost(post, index) {
@@ -168,7 +179,27 @@ export class NavComponent implements OnInit {
   }
 
   setCountry(event): void {
-    console.log(event.target.value);
+    // console.log(event.target.value);
+    this.sourceListByCountry = [];
+    for (const src of this.sources) {
+      if (event.target.value === src.country) {
+        console.log(src);
+        this.sourceListByCountry.push({
+          id: src.id,
+          code: src.id,
+          name: src.name
+        });
+      }
+    }
+    console.log(this.sourceListByCountry);
     // this.getPosts();
+  }
+
+  subscribeToNotifications() {
+    // this.swPush.requestSubscription({
+    //   serverPublicKey: this.VAPID_PUBLIC_KEY
+    // })
+    //   .then(sub => this.newsletterService.addPushSubscriber(sub).subscribe())
+    //   .catch(err => console.error('Could not subscribe to notifications', err));
   }
 }
