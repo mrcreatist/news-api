@@ -2,6 +2,9 @@
 <!-- <img src="assets/material-icons/outline-settings-24px.svg"> -->
 
 <div class="choice">
+  <select (change)="setCountry($event)">
+    <option *ngFor="let item of sourceCountries" [(value)]="item.code">{{item.name}}</option>
+  </select>
   <select (change)="setSource($event)">
     <option *ngFor="let item of sources" [(value)]="item.id">{{item.name}}</option>
   </select>
