@@ -22,8 +22,8 @@ export class NavComponent implements OnInit {
   sourceListByCountry = [];
   showNews = false;
 
-  private _search = 'microsoft';
-  private _source = '';
+  private _search = '';
+  private _source = 'the-verge';
   private _language = 'en';
   private _sortBy = 'publishedAt';
   private _pageSize = 10;
