@@ -1,1 +1,9 @@
 @import "nav/nav.component";
+@import "feed/feed.component";
+@import "detail/detail.component";
+
+// .app {
+  .app_container {
+    margin-top: 5em;
+  }
+// }

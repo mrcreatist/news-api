@@ -1,0 +1,18 @@
+<div class="detail_container">
+  <i class="material-icons back_button" (click)="gotoFeed()">arrow_back</i>
+
+  <div class="news_detail">
+    <h1>{{detail.title}}</h1>
+    <img src="{{detail.urlToImage}}">
+    <p>{{detail.description}}</p>
+  </div>
+
+  <div class="fixed_button">
+    <button (click)="gotoSource()">
+      <span>
+        Goto Source
+        <i class="material-icons">open_in_new</i>
+      </span>
+    </button>
+  </div>
+</div>

@@ -12,26 +12,6 @@ export class NewsApiService {
 
   readonly API_KEY = '04e45108448f40bfb3f4dfbc5a639f8c';
 
-  // private _search = '';
-  // private _source = 'bloomberg';
-  // private _domain = ''; // sources to block
-  // // private _from  = ''; // work in progress
-  // // private _to = ''; // work in progress
-  // private _language = 'en';
-  // private _sortBy = 'publishedAt'; // relevancy, popularity, publishedAt
-  // private _pageSize = 10;
-  // private _page = 1;
-  // private _country = 'india';
-
-  //  `https://newsapi.org/v2/everything?` +
-  //  `q=${this._search}&` +
-  //  `sources=${this._source}&` +
-  //  `language=${this._language}&` +
-  //  `sortBy=${this._sortBy}&` +
-  //  `pageSize=${this._pageSize}&` +
-  //  `page=${this._page}&` +
-  //  `apiKey=${this.API_KEY}`;
-
   private _ROOT_URL = `https://newsapi.org/v2`;
   private _CONTENT_TYPE = 'everything';
   readonly TEST_URL = `https://newsapi.org/v2/everything?language=en&sources=google-news-in&apiKey=04e45108448f40bfb3f4dfbc5a639f8c`;

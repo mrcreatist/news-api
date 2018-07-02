@@ -1,0 +1,64 @@
+.app-detail {
+  .detail_container {
+    margin-bottom: 6em;
+
+    .back_button {
+      margin-left: 1em;
+      transition: 0.2s;
+      cursor: pointer;
+
+      &:hover {
+        margin-left: 0.8em;
+      }
+    }
+
+    .news_detail {
+      margin: 1em;
+      h1 {
+        font-size: 1.6em;
+      }
+      img {
+        width: 100%;
+        height: auto;
+      }
+      p {
+        font-size: 1em;
+      }
+    }
+
+    .fixed_button {
+      position: fixed;
+      width: 100%;
+      display: flex;
+      bottom: 0;
+      justify-content: center;
+
+      button {
+        cursor: pointer;
+        border: 0;
+        padding: 1em;
+        border-radius: 2em;
+        min-width: 18em;
+        background-color: yellow;
+        filter: drop-shadow(0px 4px 6px #cccccc);
+        margin: 1em;
+
+        span {
+          text-transform: uppercase;
+          font-weight: bold;
+          font-size: 12px;
+          display: flex;
+          align-items: center;
+          margin: auto;
+          width: fit-content;
+          font-weight: 800;
+          i {
+            font-size: 18px;
+            margin-left: 4px;
+            font-weight: 800;
+          }
+        }
+      }
+    }
+  }
+}
