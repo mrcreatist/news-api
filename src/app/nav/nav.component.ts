@@ -8,10 +8,22 @@ import { Component, OnInit, HostBinding } from '@angular/core';
 export class NavComponent implements OnInit {
   @HostBinding('class') NavComponentClass = 'app-nav';
 
-  constructor(
+  menuToggle = false;
+  filterToggle = false;
 
+  constructor(
   ) {}
 
   ngOnInit() {
+  }
+
+  openMenu() {
+    this.menuToggle = !this.menuToggle;
+    this.filterToggle = false;
+  }
+
+  openFilter() {
+    this.filterToggle = !this.filterToggle;
+    this.menuToggle = false;
   }
 }

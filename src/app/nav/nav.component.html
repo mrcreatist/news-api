@@ -1,10 +1,26 @@
-<div class="nav_container">
-  <i class="material-icons">notes</i>
-  <span>
-    <img draggable="false" src="assets/newspaper.svg">
-    <p>.</p>
-  </span>
-  <i class="material-icons">filter_list</i>
+<div class="nav_menu">
+  <div class="nav_container">
+    <i class="material-icons" (click)="openMenu()">notes</i>
+    <span>
+      <img draggable="false" src="assets/newspaper.svg">
+      <p>.</p>
+    </span>
+    <i class="material-icons" (click)="openFilter()">filter_list</i>
+  </div>
+
+  <div class="menu" *ngIf="menuToggle">
+    <!-- <select (change)="setCountry($event)">
+      <option *ngFor="let item of sourceCountries" [(value)]="item.code">{{item.name}}</option>
+    </select> -->
+    <p>abc</p>
+    <p>abc</p>
+    <p>abc</p>
+    <p>abc</p>
+  </div>
+
+  <div class="menu" *ngIf="filterToggle">
+    Filter contents
+  </div>
 </div>
 
 <!-- <button (click)="subscribeToNotifications()">Subscribe</button> -->

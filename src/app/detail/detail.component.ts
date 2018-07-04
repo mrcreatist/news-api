@@ -1,6 +1,7 @@
 import { Component, OnInit, HostBinding } from '@angular/core';
 import { NewsDetailService } from '../common/news-detail.service';
 import { Router } from '@angular/router';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-detail',
@@ -13,12 +14,17 @@ export class DetailComponent implements OnInit {
 
   constructor(
     private _newsDetail: NewsDetailService,
-    private _router: Router
+    private _router: Router,
+    private _location: Location
   ) { }
 
   ngOnInit() {
     window.scroll(0, 0);
     this.detail = this._newsDetail.getNewsDetail();
+  }
+
+  goBack() {
+    this._location.back();
   }
 
   gotoSource() {
