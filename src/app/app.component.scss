@@ -2,8 +2,14 @@
 @import "feed/feed.component";
 @import "detail/detail.component";
 
-// .app {
-  .app_container {
-    margin-top: 5em;
-  }
-// }
+.app_container {
+  margin-top: 4.5em;
+}
+
+p::selection {
+  background: yellow;
+}
+
+h1::selection {
+  background:yellow;
+}

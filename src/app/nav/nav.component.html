@@ -8,20 +8,34 @@
     <i class="material-icons" (click)="openFilter()">filter_list</i>
   </div>
 
-  <div class="menu" *ngIf="menuToggle">
-    <!-- <select (change)="setCountry($event)">
+  <div class="menu" *ngIf="filterToggle">
+
+    <div class="search">
+        <input placeholder="Search here">
+        <button>
+          <i class="material-icons">search</i>
+        </button>
+    </div>
+
+    <div class="divider">
+      <hr>
+      <p>OR</p>
+      <hr>
+
+    </div>
+
+    <p class="highlight">Select Country</p>
+    <select (change)="setCountry($event)">
       <option *ngFor="let item of sourceCountries" [(value)]="item.code">{{item.name}}</option>
-    </select> -->
-    <p>abc</p>
-    <p>abc</p>
-    <p>abc</p>
-    <p>abc</p>
+    </select>
+
+    <p class="highlight">Select News Source</p>
+    <select (change)="setSource($event)">
+        <option *ngFor="let item of sourceListByCountry" [(value)]="item.id">{{item.name}}</option>
+      </select>
   </div>
 
-  <div class="menu" *ngIf="filterToggle">
-    Filter contents
+  <div class="menu" *ngIf="menuToggle">
+    Menu contents
   </div>
 </div>
-
-<!-- <button (click)="subscribeToNotifications()">Subscribe</button> -->
-<!-- <img src="assets/material-icons/outline-settings-24px.svg"> -->

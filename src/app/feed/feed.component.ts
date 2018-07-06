@@ -184,7 +184,6 @@ export class FeedComponent implements OnInit {
   }
 
   setCountry(event): void {
-    // console.log(event.target.value);
     this.sourceListByCountry = [];
     for (const src of this.sources) {
       if (event.target.value === src.country) {
@@ -196,8 +195,6 @@ export class FeedComponent implements OnInit {
         });
       }
     }
-    console.log(this.sourceListByCountry);
-    // this.getPosts();
   }
 
   subscribeToNotifications() {
