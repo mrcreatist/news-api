@@ -1,12 +1,21 @@
 <div class="detail_container">
   <i class="material-icons back_button" (click)="goBack()">arrow_back</i>
-
   <div class="news_detail">
     <h1>{{detail.title}}</h1>
-    <img src="{{detail.urlToImage}}">
-    <p>{{detail.description}}</p>
+    <img src="{{detail.urlToImage === null ? 'assets/default.png' : detail.urlToImage}}">
+    <div class="author_section">
+      <div class="author">
+        <p class="name">{{detail.author}}</p>
+        <p class="company">{{detail.source.name}}</p>
+      </div>
+      <div class="company_link">
+        <button (click)="gotoSource()">
+          <i class="material-icons">open_in_new</i>
+        </button>
+      </div>
+    </div>
+    <p>{{detail.description === '' ? 'Detail not provided by the source' : detail.description}}</p>
   </div>
-
   <div class="fixed_button">
     <button (click)="gotoSource()">
       <span>

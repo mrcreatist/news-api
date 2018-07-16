@@ -21,6 +21,44 @@
         width: 100%;
         height: auto;
       }
+      .author_section {
+        display: flex;
+        width: 100%;
+        align-items: center;
+        .author {
+          width: 100%;
+          height: fit-content;
+          .name {
+            margin-top: 0;
+            margin-bottom: 0;
+            text-transform: uppercase;
+            font-weight: bold;
+            font-size: 12px;
+          }
+          .company {
+            margin: 0;
+            text-transform: uppercase;
+            font-size: 10px;
+          }
+        }
+        .company_link {
+          button {
+            padding: 6px;
+            margin: 0;
+            border: 0;
+            background: yellow;
+            border-radius: 50%;
+            filter: drop-shadow(0 4px 4px #cccccc);
+            transition: 0.4s;
+            cursor: pointer;
+
+            &:hover {
+              filter: drop-shadow(0 2px 2px #cccccc);
+            }
+          }
+        }
+
+      }
       p {
         font-size: 1em;
       }
@@ -42,6 +80,7 @@
         background-color: yellow;
         filter: drop-shadow(0px 4px 6px #cccccc);
         margin: 1em;
+        transition: 0.4s;
 
         span {
           text-transform: uppercase;
@@ -57,6 +96,10 @@
             margin-left: 4px;
             font-weight: 800;
           }
+        }
+
+        &:hover {
+          filter: drop-shadow(0px 2px 2px #cccccc);
         }
       }
     }

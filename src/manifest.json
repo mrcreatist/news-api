@@ -1,6 +1,6 @@
 {
-  "name": "my-pwa",
-  "short_name": "my-pwa",
+  "name": "News Point",
+  "short_name": "news-point",
   "theme_color": "#ffff00",
   "background_color": "#ffffff",
   "display": "standalone",

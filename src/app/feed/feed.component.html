@@ -1,7 +1,3 @@
-<div class="heading">
-  <h1>Heading</h1>
-</div>
-
 <div class="news_item_container" *ngIf="showNews">
   <div class="news_item" *ngFor="let post of posts; let i=index;">
     <span *ngIf="showPost(post, i)" (click)="newsDetail(post)">
@@ -16,6 +12,5 @@
       </div>
     </span>
     <span class="bottom-border" *ngIf="post.title !== null"></span>
-
   </div>
 </div>

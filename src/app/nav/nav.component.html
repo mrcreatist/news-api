@@ -36,6 +36,20 @@
   </div>
 
   <div class="menu" *ngIf="menuToggle">
-    Menu contents
+    <p><strong>This project is currently in progress!</strong></p>
+
+    <p style="width: fit-content; background-color: yellow">Hey Viewer,</p>
+    <p style="width: fit-content; background-color: yellow">This is my garage project which aims to serve news to the audience with a minimal design.</p>
+    <p>This is a <strong>mobile first design</strong> currently, so for best experience switch to mobile.</p>
+    <div class="about_dev">
+      <img draggable="false" src="assets/AV_developer.jpeg">
+      <div class="name_section">
+        <p class="name">Abhishek Verma</p>
+        <p class="designation">Front-end Developer</p>
+        <div class="social_media">
+          <img *ngFor="let icon of sociaIcons" src="{{icon.location}}" (click)="gotoSocialLink(icon)" draggable="false" title="AV's {{icon.name}}">
+        </div>
+      </div>
+    </div>
   </div>
 </div>
