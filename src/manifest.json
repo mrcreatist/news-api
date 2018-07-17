@@ -3,7 +3,7 @@
   "short_name": "news-point",
   "description": "Latest news with minimal UI",
   "theme_color": "#ffff00",
-  "background_color": "#ffffff",
+  "background_color": "#ffff00",
   "display": "standalone",
   "scope": "/",
   "start_url": "/",
