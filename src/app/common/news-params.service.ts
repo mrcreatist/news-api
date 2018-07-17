@@ -6,7 +6,7 @@ export class NewsParamsService {
 
   initalParams = {
     search: '',
-    source: 'the-verge',
+    source: '',
     language: 'en',
     sortBy: 'publishedAt',
     pageSize: this.pageSize,

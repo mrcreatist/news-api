@@ -11,6 +11,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { EllipsisPipe } from './common/ellipsis';
 import { FeedComponent } from './feed/feed.component';
 import { DetailComponent } from './detail/detail.component';
+import { NewsParamsService } from './common/news-params.service';
+import { IpService } from './common/ip.service';
 
 @NgModule({
   declarations: [
@@ -27,7 +29,9 @@ import { DetailComponent } from './detail/detail.component';
     ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [
-    NewsApiService
+    NewsApiService,
+    NewsParamsService,
+    IpService
   ],
   bootstrap: [AppComponent]
 })

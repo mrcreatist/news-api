@@ -1,46 +1,52 @@
 <div class="nav_menu">
   <div class="nav_container">
-    <i class="material-icons" (click)="openMenu()">notes</i>
+    <i class="material-icons" (click)="menuToggler()">notes</i>
     <span>
       <img draggable="false" src="assets/newspaper.svg">
       <p>.</p>
     </span>
-    <i class="material-icons" (click)="openFilter()">filter_list</i>
+    <i class="material-icons" (click)="filterToggler()">filter_list</i>
   </div>
 
   <div class="menu" *ngIf="filterToggle">
 
     <div class="search">
-        <input placeholder="Search here">
-        <button>
-          <i class="material-icons">search</i>
-        </button>
+      <input placeholder="Search here">
+      <button>
+        <i class="material-icons">search</i>
+      </button>
     </div>
 
     <div class="divider">
       <hr>
       <p>OR</p>
       <hr>
-
     </div>
 
-    <p class="highlight">Select Country</p>
-    <select (change)="setCountry($event)">
-      <option *ngFor="let item of sourceCountries" [(value)]="item.code">{{item.name}}</option>
-    </select>
+    <div class="category_section">
+      <p class="highlight">Select Country</p>
+      <select (change)="setCountry($event)" [(value)]="country">
+        <option *ngFor="let item of sourceCountries" [(value)]="item.code">{{item.name}}</option>
+      </select>
 
-    <p class="highlight">Select News Source</p>
-    <select (change)="setSource($event)">
+      <p class="highlight">Select News Source</p>
+      <select (change)="setSource($event)">
         <option *ngFor="let item of sourceListByCountry" [(value)]="item.id">{{item.name}}</option>
       </select>
+
+      <button class="filter_button" (click)="updateNewsParams()">Apply</button>
+    </div>
   </div>
 
   <div class="menu" *ngIf="menuToggle">
-    <p><strong>This project is currently in progress!</strong></p>
+    <p>
+      <strong>This project is currently in progress!</strong>
+    </p>
 
     <p style="width: fit-content; background-color: yellow">Hey Viewer,</p>
     <p style="width: fit-content; background-color: yellow">This is my garage project which aims to serve news to the audience with a minimal design.</p>
-    <p>This is a <strong>mobile first design</strong> currently, so for best experience switch to mobile.</p>
+    <p>This is a
+      <strong>mobile first design</strong> currently, so for best experience switch to mobile.</p>
     <div class="about_dev">
       <img draggable="false" src="assets/AV_developer.jpeg">
       <div class="name_section">

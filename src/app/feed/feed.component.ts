@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { NewsApiService } from '../common/news-api.service';
 import { Router } from '@angular/router';
 import { NewsDetailService } from '../common/news-detail.service';
+import { NewsParamsService } from '../common/news-params.service';
 
 @Component({
   selector: 'app-feed',
@@ -17,37 +18,34 @@ export class FeedComponent implements OnInit {
   posts = [];
   showNews = false;
 
-  private _search = '';
-  private _source = 'the-verge';
-  private _language = 'en';
-  private _sortBy = 'publishedAt';
-  private _pageSize = 10;
-  private _page = 1;
-
   constructor(
-    private _http: HttpClient,
-    private _router: Router,
+    private _newsParams: NewsParamsService,
     private _newsapi: NewsApiService,
     private _newsDetail: NewsDetailService,
-
+    private _router: Router,
     private swPush: SwPush
   ) { }
 
   ngOnInit() {
-    // this.getSourceList();
-    this.getPosts();
+    this._newsParams.newsSource.subscribe(
+      (res: any) => {
+        if (res.source !== '') {
+          this._newsapi.resetrequestParameter();
+          this._newsapi.setParam('q', res.search);
+          this._newsapi.setParam('sources', res.source);
+          this._newsapi.setParam('language', res.language);
+          this._newsapi.setParam('sortBy', res.sortBy);
+          this._newsapi.setParam('pageSize', res.pageSize);
+          this._newsapi.setParam('page', res.page);
+
+          // get the parametrised news
+          this.getPosts();
+        }
+      }
+    );
   }
 
   getPosts() {
-    this._newsapi.resetrequestParameter();
-
-    this._newsapi.setParam('q', this._search);
-    this._newsapi.setParam('sources', this._source);
-    this._newsapi.setParam('language', this._language);
-    this._newsapi.setParam('sortBy', this._sortBy);
-    this._newsapi.setParam('pageSize', this._pageSize);
-    this._newsapi.setParam('page', this._page);
-
     this._newsapi.getNewsFromAPI().subscribe(
       (res: any) => {
         this.posts = res.articles;

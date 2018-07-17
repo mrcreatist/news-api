@@ -74,7 +74,7 @@ export class NewsApiService {
 
   // GETTING NEWS API SOURCES
   public getSourcesList() {
-    return `${this._ROOT_URL}/sources?apiKey=${this.API_KEY}`;
+    return this._http.get(`${this._ROOT_URL}/sources?apiKey=${this.API_KEY}`);
   }
 
   public setCountryQuery(sourceCountries: any) {
