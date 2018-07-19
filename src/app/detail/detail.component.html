@@ -2,7 +2,7 @@
   <i class="material-icons back_button" (click)="goBack()">arrow_back</i>
   <div class="news_detail">
     <h1>{{detail.title}}</h1>
-    <img src="{{detail.urlToImage === null ? 'assets/default.png' : detail.urlToImage}}">
+    <img src="{{detail.urlToImage === null ? 'assets/default.png' : detail.urlToImage}}" alt="detail_image">
     <div class="author_section">
       <div class="author">
         <p class="name">{{detail.author}}</p>

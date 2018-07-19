@@ -1,9 +1,10 @@
 import { NewsApiService } from './../common/news-api.service';
-import { Component, OnInit, HostBinding } from '@angular/core';
+import { Component, OnInit, HostBinding, PipeTransform } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { NewsParamsService } from '../common/news-params.service';
 import { Router } from '../../../node_modules/@angular/router';
 import { IpService } from '../common/ip.service';
+import { SortPipe } from '../common/sort.pipe';
 
 @Component({
   selector: 'app-nav',
@@ -28,7 +29,8 @@ export class NavComponent implements OnInit {
     language: 'en',
     sortBy: 'publishedAt',
     pageSize: this._newsParams.pageSize,
-    page: this._newsParams.page
+    page: this._newsParams.page,
+    country: 'India'
   };
 
   sociaIcons = [
@@ -51,7 +53,12 @@ export class NavComponent implements OnInit {
       name: 'LinkedIn',
       location: 'assets/social-media/linkedin.svg',
       redirectTo: 'https://www.linkedin.com/in/mrcreatist/'
-    }
+    },
+    {
+      name: 'GitHub',
+      location: 'assets/social-media/github.svg',
+      redirectTo: 'https://github.com/MrCreatist'
+    },
   ];
 
   constructor(
@@ -59,8 +66,9 @@ export class NavComponent implements OnInit {
     private _newsapi: NewsApiService,
     private _newsParams: NewsParamsService,
     private _ipService: IpService,
-    private _router: Router
-  ) {}
+    private _router: Router,
+    private _sort: SortPipe
+  ) { }
 
   ngOnInit() {
     this.getSourceList();
@@ -113,22 +121,35 @@ export class NavComponent implements OnInit {
             this.sourceCountries[i].name = response[i].name;
           }
 
+          // Sorting countries in ascending order
+          this.sourceCountries = this._sort.transform(this.sourceCountries, 'asc');
+
           // getting user location details
           this._ipService.getUserLocationDetails();
           this._ipService.countryCode.subscribe(
             (resp: any) => {
               // setting user's location country code
               this.country = this.countryExists(String(resp).toLowerCase()) ? String(resp).toLowerCase() : 'in';
-              this.setCountry( { target: { value: this.country } } );
+
+              // mapping country name againt selectedParams.country
+              for (const country of this.sourceCountries) {
+                if (country.code === this.country) {
+                  this.selectedParams.country = country.name;
+                }
+              }
+              this.setCountry({ target: { value: this.country } });
             }
           );
 
+          // sorting source by country in ascending order
+          this.sourceListByCountry = this._sort.transform(this.sourceListByCountry, 'asc');
+
           // passing the source[0] to the BehaviourSubject service
-          this.setSource( { target: { value: this.sourceListByCountry[0].id } } );
+          this.setSource({ target: { value: this.sourceListByCountry[0].id } });
           this._newsParams.setNewsSource(this.selectedParams);
         });
       },
-      (error: any) => {}
+      (error: any) => { }
     );
   }
 
@@ -147,6 +168,13 @@ export class NavComponent implements OnInit {
     this.selectedParams.country = event.target.value;
     this.country = event.target.value;
 
+    // mapping country name againt selectedParams.country
+    for (const country of this.sourceCountries) {
+      if (country.code === this.country) {
+        this.selectedParams.country = country.name;
+      }
+    }
+
     // getting sourceList
     this.sourceListByCountry = [];
     for (const src of this.sources) {
@@ -157,7 +185,7 @@ export class NavComponent implements OnInit {
         });
       }
     }
-    this.setSource({target: {value: this.sourceListByCountry[0].id}});
+    this.setSource({ target: { value: this.sourceListByCountry[0].id } });
   }
 
   public setSource(event): void {

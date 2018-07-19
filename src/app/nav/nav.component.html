@@ -2,7 +2,7 @@
   <div class="nav_container">
     <i class="material-icons" (click)="menuToggler()">notes</i>
     <span>
-      <img draggable="false" src="assets/newspaper.svg">
+      <img draggable="false" src="assets/newspaper.svg" alt="news-point-logo">
       <p>.</p>
     </span>
     <i class="material-icons" (click)="filterToggler()">filter_list</i>
@@ -48,12 +48,12 @@
     <p>This is a
       <strong>mobile first design</strong> currently, so for best experience switch to mobile.</p>
     <div class="about_dev">
-      <img draggable="false" src="assets/AV_developer.jpeg">
+      <img draggable="false" src="assets/AV_developer.jpeg" alt="AV_profile">
       <div class="name_section">
         <p class="name">Abhishek Verma</p>
         <p class="designation">Front-end Developer</p>
         <div class="social_media">
-          <img *ngFor="let icon of sociaIcons" src="{{icon.location}}" (click)="gotoSocialLink(icon)" draggable="false" title="AV's {{icon.name}}">
+          <img *ngFor="let icon of sociaIcons" src="{{icon.location}}" (click)="gotoSocialLink(icon)" draggable="false" title="AV's {{icon.name}}" alt="AV_icon">
         </div>
       </div>
     </div>

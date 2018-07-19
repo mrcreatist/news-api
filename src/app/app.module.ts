@@ -13,6 +13,7 @@ import { FeedComponent } from './feed/feed.component';
 import { DetailComponent } from './detail/detail.component';
 import { NewsParamsService } from './common/news-params.service';
 import { IpService } from './common/ip.service';
+import { SortPipe } from './common/sort.pipe';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { IpService } from './common/ip.service';
     NavComponent,
     EllipsisPipe,
     FeedComponent,
-    DetailComponent
+    DetailComponent,
+    SortPipe
   ],
   imports: [
     BrowserModule,
@@ -31,7 +33,8 @@ import { IpService } from './common/ip.service';
   providers: [
     NewsApiService,
     NewsParamsService,
-    IpService
+    IpService,
+    SortPipe
   ],
   bootstrap: [AppComponent]
 })

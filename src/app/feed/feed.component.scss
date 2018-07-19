@@ -1,129 +1,140 @@
 .app-feed {
-  .choice {
+  .load_container {
+    width: 100%;
+    margin-top: 16em;
     display: flex;
-    flex-direction: row;
-    select {
-      background-color: white;
-      padding: 6px;
-      flex: 1;
-      width: 100%;
-      margin: 1em;
-      border: 0;
-      border-bottom: 1px solid black;
-    }
-  }
-
-  .heading {
-    h1 {
-      font-size: 24px;
-      background-color: yellow;
-      width: 100%;
+    flex-direction: column;
+    img {
       margin: auto;
-      text-align: center;
-      margin-bottom: 0.5em;
+      width: 100px;
+      height: 100px;
+    }
+    p {
+      font-weight: 500;
+      color: black;
       text-transform: uppercase;
+      margin: auto;
+      width: fit-content;
+      margin-top: 1em;
+      text-align: center;
     }
   }
-
   .news_item_container {
     padding: 0;
-
-    .news_item {
-
-      span {
-        display: flex;
-        flex-direction: row;
-        margin-top: 0;
-        margin-bottom: 0;
-        padding-bottom: 1em;
-        padding: 1em;
-        transition: 1s;
-
-        img {
-          flex: 1;
-          background-image: url('/assets/default.png');
-          background-size: 100%;
-          background-position: center;
-          width: 100px;
-          height: 100px;
-          object-fit: cover;
-          border-radius: 8px;
-          filter: drop-shadow(0px 6px 6px #cccccc);
-          margin: 0;
-          margin-top: 5px;
+    display: flex;
+    flex-direction: column;
+    .content_type_header {
+      font-family: 'Crete Round', serif;
+      font-size: 2em;
+      padding: 6em 0 10em 1em;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      background-color: yellow;
+      .content_text {
+        margin: 0;
+        text-decoration: none;
+      }
+    }
+    .news_item_holder {
+      width: 96%;
+      background-color: white;
+      filter: drop-shadow(0 2px 4px #cccccc);
+      border-radius: 6px;
+      margin: auto;
+      position: absolute;
+      left: 0;
+      right: 0;
+      margin: 36em auto 1em auto;
+      overflow: hidden;
+      .news_item {
+        span {
+          display: flex;
+          flex-direction: row;
+          margin-top: 0;
           margin-bottom: 0;
-          transition: 0.2s;
-
-          &::before{
-            content: 'image loading';
-            background-image: url('/src/assets/default.png');
-          }
-        }
-
-        .content_holder {
-          margin-left: 1em;
-          flex: 2;
-          width: 100%;
-          display: grid;
-          grid-template-rows: 1fr 1fr;
-
-          .content {
-            margin: 0;
-          }
-
-          .bottom_section {
-            display: flex;
-            flex-wrap: wrap;
-            flex-direction: row;
-            justify-content: space-between;
-            font-weight: bold;
-            align-items: center;
-            margin: 0;
-            padding: 0;
-            transition: 0.2s;
-            background-color: transparent;
-
-            .source {
-              margin: 0;
-              text-transform: uppercase;
-              background-color: yellow;
-              padding: 0 3px;
-            }
-            .publish_date {
-              margin: 0;
-              font-size: 12px;
-
-            }
-          }
-        }
-        &:hover {
-          cursor: pointer;
-          background-color: #f3f3f3;
-          // background: linear-gradient(to bottom right, white, red);
+          padding-bottom: 1em;
+          padding: 1em;
+          transition: 1s;
           img {
+            flex: 1;
+            background-image: url('/assets/default.png');
+            background-size: 100%;
+            background-position: center;
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 8px;
+            filter: drop-shadow(0px 6px 6px #cccccc);
             margin: 0;
-            margin-bottom: 5px;
+            margin-top: 5px;
+            margin-bottom: 0;
+            transition: 0.2s;
+            &::before {
+              content: 'image loading';
+              background-image: url('/src/assets/default.png');
+            }
           }
           .content_holder {
+            margin-left: 1em;
+            flex: 2;
+            width: 100%;
+            display: grid;
+            grid-template-rows: 1fr 1fr;
+            .content {
+              margin: 0;
+            }
             .bottom_section {
-              margin-top: 10px;
-              background: none;
+              display: flex;
+              flex-wrap: wrap;
+              flex-direction: row;
+              justify-content: space-between;
+              font-weight: bold;
+              align-items: center;
+              margin: 0;
+              padding: 0;
+              transition: 0.2s;
+              background-color: transparent;
+              .source {
+                margin: 0;
+                text-transform: uppercase;
+                background-color: yellow;
+                padding: 0 3px;
+              }
+              .publish_date {
+                margin: 0;
+                font-size: 12px;
+              }
+            }
+          }
+          &:hover {
+            cursor: pointer;
+            background-color: #f3f3f3; // background: linear-gradient(to bottom right, white, red);
+            img {
+              margin: 0;
+              margin-bottom: 5px;
+            }
+            .content_holder {
+              .bottom_section {
+                margin-top: 10px;
+                background: none;
+              }
             }
           }
         }
-      }
-      .bottom-border{
-        margin: 0;
-        padding: 0;
-        border-bottom: 1px solid #cccccc;
+        .bottom-border {
+          width: 92%;
+          margin: auto;
+          padding: 0;
+          border-bottom: 1px solid #cccccc;
+        }
       }
     }
   }
-
   @media screen and (min-width: 400px) {
     .news_item_container {
       .news_item {
-        span{
+        span {
           img {
             width: 150px;
             height: 150px;

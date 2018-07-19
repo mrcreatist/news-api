@@ -1,16 +1,27 @@
+<div class="load_container" *ngIf="!showNews">
+  <img src="assets/loader.gif" alt="infinite_loader">
+  <p id="load_text">Loading news</p>
+</div>
 <div class="news_item_container" *ngIf="showNews">
-  <div class="news_item" *ngFor="let post of posts; let i=index;">
-    <span *ngIf="showPost(post, i)" (click)="newsDetail(post)">
-      <img src="{{post.urlToImage === null ? 'assets/default.png' : post.urlToImage}}">
-      <div class="content_holder">
-        <p class="content">{{post.title | ellipsis : 50}}</p>
-        <span class="bottom_section">
-          <p class="source">{{post.source.name}}</p>
-          <p class="publish_date">
-            {{post.publishedAt.split('T')[0].split('-')[0]}}/{{post.publishedAt.split('T')[0].split('-')[1]}}/{{post.publishedAt.split('T')[0].split('-')[2]}}</p>
-        </span>
-      </div>
-    </span>
-    <span class="bottom-border" *ngIf="post.title !== null"></span>
+  <div class="content_type_header">
+    <p class="content_text">Everything</p>
+    @
+    <p class="content_text">{{country}}</p>
+  </div>
+  <div class="news_item_holder">
+    <div class="news_item" *ngFor="let post of posts; let i=index;">
+      <span *ngIf="showPost(post, i)" (click)="newsDetail(post)">
+        <img src="{{post.urlToImage === null ? 'assets/default.png' : post.urlToImage}}" alt="article_image">
+        <div class="content_holder">
+          <p class="content">{{post.title | ellipsis : 50}}</p>
+          <span class="bottom_section">
+            <p class="source">{{post.source.name}}</p>
+            <p class="publish_date">
+              {{post.publishedAt.split('T')[0].split('-')[0]}}/{{post.publishedAt.split('T')[0].split('-')[1]}}/{{post.publishedAt.split('T')[0].split('-')[2]}}</p>
+          </span>
+        </div>
+      </span>
+      <span *ngIf="showPost(post, i)" class="bottom-border"></span>
+    </div>
   </div>
 </div>

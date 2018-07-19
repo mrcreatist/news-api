@@ -10,7 +10,8 @@ export class NewsParamsService {
     language: 'en',
     sortBy: 'publishedAt',
     pageSize: this.pageSize,
-    page: this.page
+    page: this.page,
+    country: 'India'
   };
 
   private messageSource = new BehaviorSubject(this.initalParams);

@@ -31,6 +31,7 @@
       i {
         margin: 1em;
         cursor: pointer;
+        user-select: none;
       }
       span {
         display: flex;
@@ -133,6 +134,7 @@
         padding: 1em;
         border-radius: 12px;
         background-color: #eaeaea36;
+        border: 1px solid #cccccc;
         .highlight {
           width: fit-content;
           background-color: yellow;
