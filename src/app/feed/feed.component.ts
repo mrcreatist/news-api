@@ -16,7 +16,7 @@ export class FeedComponent implements OnInit {
 
   readonly VAPID_PUBLIC_KEY = 'BIjq7HbZjhwdlkdzIb1SCYG3a9YEyxwN22A3S_PTWcZQSNppM0_TrLe0QGm_t39j4QVJBJe-Yg6jD2z29yuLY6k';
 
-  source: any;
+  sourceName: any;
   country: any;
 
   posts = [];
@@ -46,6 +46,7 @@ export class FeedComponent implements OnInit {
 
           // assigning value to variables
           this.country = res.country;
+          this.sourceName = res.sourceName;
 
           // get the parametrised news
           this.getPosts();
@@ -72,7 +73,6 @@ export class FeedComponent implements OnInit {
   }
 
   newsDetail(news: any) {
-    // console.log(news);
     this._newsDetail.setNewsDetail(news);
     this._router.navigateByUrl('/detail');
   }

@@ -9,10 +9,9 @@
   </div>
 
   <div class="menu" *ngIf="filterToggle">
-
     <div class="search">
       <input placeholder="Search here">
-      <button>
+      <button (click)="searchNews()">
         <i class="material-icons">search</i>
       </button>
     </div>

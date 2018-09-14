@@ -1,20 +1,5 @@
 .app-nav {
 
-
-  @keyframes menu_down {
-    // 0% { height: 0; }
-    // 100% { height: fit-content;}
-    0% { height: 0; }
-    20% { height: 100px; }
-    40% { height: 150px; }
-    60% { height: 200px;}
-    80% { height: 250px; }
-    100% { height: fit-content;}
-    // from { height: 0; }
-    // to { height: fit-content; }    
-  }
-
-
   .nav_menu {
     display: flex;
     flex-direction: column;
@@ -48,12 +33,17 @@
         }
       }
     }
+
     .menu {
       background-color: white;
       opacity: 0.98;
       padding: 1em 1.4em;
-      animation: menu_down 0.1s;
+      // animation: menu_down 1s;
       overflow: hidden;
+      // animation-timing-function: linear;
+      height: fit-content;
+			// transform: translateX(-100%);
+    	// transition: transform 300ms linear;
       
       .about_dev {
         display: flex;

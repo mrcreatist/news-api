@@ -7,6 +7,7 @@
     <p class="content_text">Everything</p>
     @
     <p class="content_text">{{country}}</p>
+    <p class="source_text" *ngIf="sourceName !== ''">{{sourceName}}</p>
   </div>
   <div class="news_item_holder">
     <div class="news_item" *ngFor="let post of posts; let i=index;">

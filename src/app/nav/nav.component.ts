@@ -25,12 +25,13 @@ export class NavComponent implements OnInit {
 
   selectedParams: any = {
     search: '',
-    source: 'the-verge',
+    source: '',
     language: 'en',
     sortBy: 'publishedAt',
     pageSize: this._newsParams.pageSize,
     page: this._newsParams.page,
-    country: 'India'
+    country: '',
+    sourceName: ''
   };
 
   sociaIcons = [
@@ -100,6 +101,7 @@ export class NavComponent implements OnInit {
             language: src.language,
             country: src.country
           });
+          // console.log(this.sources);
 
           // SETTING COUNTRY LIST
           if (!this.countryExists(src.country)) {
@@ -190,6 +192,12 @@ export class NavComponent implements OnInit {
 
   public setSource(event): void {
     this.selectedParams.source = event.target.value;
+    for (let i = 0; i < this.sources.length; i++) {
+        if (this.sources[i].id === event.target.value) {
+          this.selectedParams.sourceName = this.sources[i].name;
+          break;
+        }
+    }
   }
 
   gotoSocialLink(icon: any) {
@@ -204,5 +212,9 @@ export class NavComponent implements OnInit {
     } else {
       this.filterToggle = !this.filterToggle;
     }
+  }
+
+  searchNews() {
+    // this.selectedParams
   }
 }
