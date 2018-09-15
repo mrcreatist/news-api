@@ -1,0 +1,17 @@
+<div class="news_item">
+    <!-- *ngIf="showPost(post, i)" -->
+  <span (click)="newsDetail(post)">
+    <img src="{{data.urlToImage === null ? 'assets/default.png' : urlToImage}}" alt="article_image">
+    <div class="content_holder">
+      <p class="content">{{data.title}}</p>
+      <span class="bottom_section">
+        <p class="source">{{data.source.name}}</p>
+        <p class="publish_date">
+          {{data.publishedAt.split('T')[0].split('-')[0]}}/{{data.publishedAt.split('T')[0].split('-')[1]}}/{{data.publishedAt.split('T')[0].split('-')[2]}}
+        </p>
+      </span>
+    </div>
+  </span>
+  <!-- *ngIf="showPost(post, i)" -->
+  <span  class="bottom-border"></span>
+</div>

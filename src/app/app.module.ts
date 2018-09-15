@@ -14,6 +14,7 @@ import { DetailComponent } from './detail/detail.component';
 import { NewsParamsService } from './common/news-params.service';
 import { IpService } from './common/ip.service';
 import { SortPipe } from './common/sort.pipe';
+import { CarryComponentModule } from './common/carry-components/carry-component.module';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { SortPipe } from './common/sort.pipe';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule  ,
+    HttpClientModule,
+    CarryComponentModule,
     ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [

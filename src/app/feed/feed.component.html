@@ -9,8 +9,12 @@
     <p class="content_text">{{country}}</p>
     <p class="source_text" *ngIf="sourceName !== ''">{{sourceName}}</p>
   </div>
+
   <div class="news_item_holder">
-    <div class="news_item" *ngFor="let post of posts; let i=index;">
+
+    <app-news-item *ngFor="let post of posts; let i=index" [data]="post"></app-news-item>
+
+    <!-- <div class="news_item" *ngFor="let post of posts; let i=index;">
       <span *ngIf="showPost(post, i)" (click)="newsDetail(post)">
         <img src="{{post.urlToImage === null ? 'assets/default.png' : post.urlToImage}}" alt="article_image">
         <div class="content_holder">
@@ -23,6 +27,7 @@
         </div>
       </span>
       <span *ngIf="showPost(post, i)" class="bottom-border"></span>
-    </div>
+    </div> -->
+
   </div>
 </div>
