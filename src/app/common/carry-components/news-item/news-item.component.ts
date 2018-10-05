@@ -19,8 +19,8 @@ export class NewsItemComponent implements OnInit {
   ngOnInit() {
   }
 
-  newsDetail(news: any) {
-    this._newsDetail.setNewsDetail(news);
+  setNewsDetailIntoService() {
+    this._newsDetail.setNewsDetail(this.data);
     this._router.navigateByUrl('/detail');
   }
 
