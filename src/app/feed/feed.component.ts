@@ -20,6 +20,11 @@ export class FeedComponent implements OnInit {
   country: any;
 
   posts = [];
+  paginationList = [];
+
+  totalNumberOfNews = 0;
+  selectedPage = 10;
+
   showNews = false;
 
   constructor(
@@ -32,6 +37,13 @@ export class FeedComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    // adding value for the pagination list
+    let i = 0;
+    while (i !== 20) {
+      this.paginationList.push(i + 1);
+      i++;
+    }
+
     this._newsParams.newsSource.subscribe(
       (res: any) => {
         if (res.source !== '') {
@@ -58,6 +70,7 @@ export class FeedComponent implements OnInit {
   getPosts() {
     this._newsapi.getNewsFromAPI().subscribe(
       (res: any) => {
+        this.totalNumberOfNews = res.totalResults;
         this.posts = res.articles;
         this.posts.length === 0 ? this.displayErrorMessage() : this.showNews = true;
       },
@@ -70,11 +83,6 @@ export class FeedComponent implements OnInit {
   displayErrorMessage() {
     this.showNews = false;
     document.getElementById('load_text').innerHTML = 'An Error occured <br> try different source or country';
-  }
-
-  newsDetail(news: any) {
-    this._newsDetail.setNewsDetail(news);
-    this._router.navigateByUrl('/detail');
   }
 
   showPost(post, index) {
@@ -91,5 +99,10 @@ export class FeedComponent implements OnInit {
     // })
     //   .then(sub => this.newsletterService.addPushSubscriber(sub).subscribe())
     //   .catch(err => console.error('Could not subscribe to notifications', err));
+  }
+
+  showNewsAccordingToSelectedPage(event): void {
+    this.selectedPage = event;
+    console.log(event);
   }
 }
