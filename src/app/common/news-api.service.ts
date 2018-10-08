@@ -48,15 +48,19 @@ export class NewsApiService {
   public getRequestParameter() {
     return this._requestParameter;
   }
-  public resetrequestParameter() {
+  public resetRequestParameter() {
     this._requestParameter = [];
   }
 
   setParam(paramType: string, paramData: any) {
-    this._requestParameter.push({
-      type: paramType,
-      data: paramData
-    });
+    let count = 0;
+    this._requestParameter.filter((parameter: any) => (parameter.type === paramType ? parameter.data = paramData : count++));
+    if (this._requestParameter.length === count) {
+      this._requestParameter.push({
+        type: paramType,
+        data: paramData
+      });
+    }
   }
 
   getFinalParam() {
@@ -67,7 +71,7 @@ export class NewsApiService {
     return param;
   }
 
-  // CASTING FINAL NEWS API REQUEST
+  // PLACING FINAL NEWS API REQUEST
   public getNewsFromAPI() {
     return this._http.get(`${this._ROOT_URL}/${this._CONTENT_TYPE}?${this.getFinalParam()}apiKey=${this.API_KEY}`);
   }

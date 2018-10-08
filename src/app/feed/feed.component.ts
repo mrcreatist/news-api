@@ -21,9 +21,12 @@ export class FeedComponent implements OnInit {
 
   posts = [];
   paginationList = [];
+  newsPageSizeArray = [];
 
   totalNumberOfNews = 0;
-  selectedPage = 10;
+  selectedPage = 1;
+  currentNewsPerPage = 10;
+  paginationArray = 0;
 
   showNews = false;
 
@@ -37,24 +40,26 @@ export class FeedComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    // adding value for the pagination list
+    // adding value for the newsPageSizeArray list
     let i = 0;
     while (i !== 20) {
-      this.paginationList.push(i + 1);
+      // this.paginationList.push(i + 1);
+      this.newsPageSizeArray.push(i + 1);
       i++;
     }
 
+    // setting up the initial config for the news service
     this._newsParams.newsSource.subscribe(
       (res: any) => {
         if (res.source !== '') {
           this.showNews = false;
-          this._newsapi.resetrequestParameter();
+          this._newsapi.resetRequestParameter();
           this._newsapi.setParam('q', res.search);
           this._newsapi.setParam('sources', res.source);
           this._newsapi.setParam('language', res.language);
           this._newsapi.setParam('sortBy', res.sortBy);
-          this._newsapi.setParam('pageSize', res.pageSize);
-          this._newsapi.setParam('page', res.page);
+          this._newsapi.setParam('pageSize', this.currentNewsPerPage);
+          this._newsapi.setParam('page', this.selectedPage);
 
           // assigning value to variables
           this.country = res.country;
@@ -73,6 +78,17 @@ export class FeedComponent implements OnInit {
         this.totalNumberOfNews = res.totalResults;
         this.posts = res.articles;
         this.posts.length === 0 ? this.displayErrorMessage() : this.showNews = true;
+
+        // calculating total number of pages
+        this.paginationArray = Math.ceil(this.totalNumberOfNews / this.currentNewsPerPage);
+
+        // resetting PaginationList
+        this.paginationList = [];
+
+        // adding values to the paginationList array from 0 to 'n'
+        for (let i = 0; i < this.paginationArray; i++) {
+          this.paginationList.push(i + 1);
+        }
       },
       (err: any) => {
         this.displayErrorMessage();
@@ -102,7 +118,14 @@ export class FeedComponent implements OnInit {
   }
 
   showNewsAccordingToSelectedPage(event): void {
-    this.selectedPage = event;
-    console.log(event);
+    this.selectedPage = event.target.value;
+    this._newsapi.setParam('page', this.selectedPage);
+    this.getPosts();
+  }
+
+  setNewsLimitPerPage(event): void {
+    this.currentNewsPerPage = event.target.value;
+    this._newsapi.setParam('pageSize', event.target.value);
+    this.getPosts();
   }
 }

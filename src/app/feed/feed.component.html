@@ -17,22 +17,21 @@
 
   <div class="bottom_navigation">
     <span>
-      <p>News per Page:</p>
-      <!-- <select (change)="setCountry($event)" [(value)]="country">
-        <option *ngFor="let item of sourceCountries" [(value)]="item.code">{{item.name}}</option>
-      </select> -->
+      <p>
+        News per Page:
+        <select (change)="setNewsLimitPerPage($event)" [(value)]="currentNewsPerPage">
+          <option *ngFor="let limit of newsPageSizeArray" value="{{limit}}">{{limit}}</option>
+        </select>
+      </p>
     </span>
     <span>
-      <select (change)="showNewsAccordingToSelectedPage($event)">
-        <option *ngFor="let pageNumber of paginationList" value="Page {{selectedPage}}">Page {{pageNumber}}</option>
-      </select>
-      of {{totalNumberOfNews}}
+      <p>
+        Page 
+        <select (change)="showNewsAccordingToSelectedPage($event)" [(value)]="selectedPage">
+          <option *ngFor="let pageNumber of paginationList" value="{{pageNumber}}">{{pageNumber}}</option>
+        </select>
+        of {{paginationArray}}
+      </p>
     </span>
   </div>
 </div>
-
-<!--
-  Things to add:
-  1. Pagination
-  2. Page Size
--->
