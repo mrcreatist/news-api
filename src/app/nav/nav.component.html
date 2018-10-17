@@ -8,35 +8,6 @@
     <i class="material-icons" (click)="filterToggler()">filter_list</i>
   </div>
 
-  <div class="menu" *ngIf="filterToggle">
-    <div class="search">
-      <input placeholder="Search here">
-      <button (click)="searchNews()">
-        <i class="material-icons">search</i>
-      </button>
-    </div>
-
-    <div class="divider">
-      <hr>
-      <p>OR</p>
-      <hr>
-    </div>
-
-    <div class="category_section">
-      <p class="highlight">Select Country</p>
-      <select (change)="setCountry($event)" [(value)]="country">
-        <option *ngFor="let item of sourceCountries" [(value)]="item.code">{{item.name}}</option>
-      </select>
-
-      <p class="highlight">Select News Source</p>
-      <select (change)="setSource($event)">
-        <option *ngFor="let item of sourceListByCountry" [(value)]="item.id">{{item.name}}</option>
-      </select>
-
-      <button class="filter_button" (click)="updateNewsParams()">Apply</button>
-    </div>
-  </div>
-
   <div class="menu" *ngIf="menuToggle">
     <p>
       <strong>This project is currently in progress!</strong>
@@ -57,4 +28,67 @@
       </div>
     </div>
   </div>
+
+  <div class="menu" *ngIf="filterToggle" [ngClass]="{'menu_expanded': searchView}">
+    <div class="search">
+      <input placeholder="Search here" #seach_input_box>
+      <button (click)="searchNews(seach_input_box.value)" title="search">
+        <i class="material-icons">search</i>
+      </button>
+      <button (click)="searchView = !searchView" title="toogle Search View" *ngIf="showSwitcher">
+        <i class="material-icons">import_export</i>
+      </button>
+    </div>
+
+    <div class="divider" *ngIf="!searchView">
+      <hr>
+      <p>OR</p>
+      <hr>
+    </div>
+
+    <div class="category_section" *ngIf="!searchView">
+      <p class="highlight">Select Country</p>
+      <select (change)="setCountry($event)" [(value)]="country">
+        <option *ngFor="let item of sourceCountries" [(value)]="item.code">{{item.name}}</option>
+      </select>
+
+      <p class="highlight">Select News Source</p>
+      <select (change)="setSource($event)">
+        <option *ngFor="let item of sourceListByCountry" [(value)]="item.id">{{item.name}}</option>
+      </select>
+
+      <button class="filter_button" (click)="updateNewsParams()">Apply</button>
+    </div>
+
+    <div class="search_view" *ngIf="searchView">
+      <app-loader *ngIf="!searchResult"></app-loader>
+
+      <div class="no_search_result" *ngIf="searchResult && searchResult.totalResults === 0">
+          <i class="material-icons">error</i>
+          <p>No Results Found</p>
+      </div>
+
+      <div
+        class="search_result_container"
+        *ngIf="searchResult && searchResult.totalResults > 0"
+        [ngClass]="{'hide_search_result_container': showSearchResultDetail}"
+      >
+        <app-news-item
+          *ngFor="let searchResultItem of searchResult.articles"
+          [data]="searchResultItem"
+          [getClickEvent]="true"
+          (catchClickEvent)="newsItemClicked($event)"
+        ></app-news-item>
+      </div>
+
+      <div class="search_result_detail" *ngIf="showSearchResultDetail">
+        <app-detail
+          [inSearchMode]="true"
+          (returnPreviousEvent)="exitDetail($event)"
+        ></app-detail>
+      </div>
+
+    </div>
+  </div>
+
 </div>

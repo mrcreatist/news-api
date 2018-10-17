@@ -31,12 +31,12 @@ export class NewsApiService {
   ) { }
 
 
-  public get CONTENT_TYPE() {
-    return this._CONTENT_TYPE;
-  }
-  public set CONTENT_TYPE(value) {
-    this._CONTENT_TYPE = value;
-  }
+  // public get CONTENT_TYPE() {
+  //   return this._CONTENT_TYPE;
+  // }
+  // public set CONTENT_TYPE(value) {
+  //   this._CONTENT_TYPE = value;
+  // }
 
   public get requestParameter() {
     return this._requestParameter;

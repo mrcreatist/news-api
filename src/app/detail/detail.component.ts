@@ -1,4 +1,4 @@
-import { Component, OnInit, HostBinding } from '@angular/core';
+import { Component, OnInit, HostBinding, Input, Output, EventEmitter } from '@angular/core';
 import { NewsDetailService } from '../common/news-detail.service';
 import { Router } from '@angular/router';
 import { Location } from '@angular/common';
@@ -9,6 +9,9 @@ import { Location } from '@angular/common';
 })
 export class DetailComponent implements OnInit {
   @HostBinding('class') DetailComponentClass = 'app-detail';
+
+  @Input() inSearchMode;
+  @Output() returnPreviousEvent = new EventEmitter<any>();
 
   detail: any;
 
@@ -24,7 +27,13 @@ export class DetailComponent implements OnInit {
   }
 
   goBack() {
-    this._location.back();
+    if (this.inSearchMode) {
+      this.returnPreviousEvent.emit({
+        backButtonClicked: true
+      });
+    } else {
+      this._location.back();
+    }
   }
 
   gotoSource() {

@@ -1,0 +1,23 @@
+.app-loader {
+  .load_container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+
+    img {
+      margin: auto;
+      width: 100px;
+      height: 100px;
+    }
+
+    p {
+      font-weight: 500;
+      color: black;
+      text-transform: uppercase;
+      margin: auto;
+      width: fit-content;
+      margin-top: 1em;
+      text-align: center;
+    }
+  }
+}

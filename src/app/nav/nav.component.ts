@@ -13,13 +13,18 @@ import { SortPipe } from '../common/sort.pipe';
 export class NavComponent implements OnInit {
   @HostBinding('class') NavComponentClass = 'app-nav';
 
+  searchResult: any;
+
   menuToggle = false;
   filterToggle = false;
+  searchView = false;
+  showSearchResultDetail = false;
+  showSwitcher = false;
 
   newsSource: string;
-  sources = [];
-
   country: string;
+
+  sources = [];
   sourceCountries = [];
   sourceListByCountry = [];
 
@@ -101,7 +106,6 @@ export class NavComponent implements OnInit {
             language: src.language,
             country: src.country
           });
-          // console.log(this.sources);
 
           // SETTING COUNTRY LIST
           if (!this.countryExists(src.country)) {
@@ -164,7 +168,6 @@ export class NavComponent implements OnInit {
     return false;
   }
 
-
   // called through HTML
   setCountry(event): void {
     this.selectedParams.country = event.target.value;
@@ -193,10 +196,10 @@ export class NavComponent implements OnInit {
   public setSource(event): void {
     this.selectedParams.source = event.target.value;
     for (let i = 0; i < this.sources.length; i++) {
-        if (this.sources[i].id === event.target.value) {
-          this.selectedParams.sourceName = this.sources[i].name;
-          break;
-        }
+      if (this.sources[i].id === event.target.value) {
+        this.selectedParams.sourceName = this.sources[i].name;
+        break;
+      }
     }
   }
 
@@ -214,7 +217,33 @@ export class NavComponent implements OnInit {
     }
   }
 
-  searchNews() {
-    // this.selectedParams
+  searchNews(value: string) {
+    if (value !== '') {
+      this.searchView = true;
+      this.showSwitcher = true;
+      this._newsParams.newsSource.subscribe(
+        (res: any) => {
+          this._newsapi.resetRequestParameter();
+          this._newsapi.setParam('q', value);
+          this._newsapi.getNewsFromAPI().subscribe(
+            (response: any) => {
+              this.searchResult = response;
+            }
+          );
+        }
+      );
+    }
+  }
+
+  newsItemClicked(clickEvent: any) {
+    if (clickEvent.clicked) {
+      this.showSearchResultDetail = true;
+    }
+  }
+
+  exitDetail(clickEvent: any) {
+    if (clickEvent.backButtonClicked) {
+      this.showSearchResultDetail = false;
+    }
   }
 }
