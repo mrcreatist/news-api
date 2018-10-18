@@ -1,9 +1,9 @@
-import { NewsApiService } from './../common/news-api.service';
+import { NewsApiService } from '../_services/news-api.service';
 import { Component, OnInit, HostBinding, PipeTransform } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { NewsParamsService } from '../common/news-params.service';
+import { NewsParamsService } from '../_services/news-params.service';
 import { Router } from '../../../node_modules/@angular/router';
-import { IpService } from '../common/ip.service';
+import { IpService } from '../_services/ip.service';
 import { SortPipe } from '../common/sort.pipe';
 
 @Component({
@@ -209,8 +209,8 @@ export class NavComponent implements OnInit {
 
   updateNewsParams() {
     this._newsParams.setNewsSource(this.selectedParams);
-    if (this._router.url !== '/') {
-      this._router.navigateByUrl('/');
+    if (this._router.url !== '/feed') {
+      this.gotoFeed();
       this.filterToggle = !this.filterToggle;
     } else {
       this.filterToggle = !this.filterToggle;
@@ -245,5 +245,9 @@ export class NavComponent implements OnInit {
     if (clickEvent.backButtonClicked) {
       this.showSearchResultDetail = false;
     }
+  }
+
+  gotoFeed() {
+    this._router.navigateByUrl('/feed');
   }
 }

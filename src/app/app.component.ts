@@ -1,5 +1,6 @@
 import { Component, HostBinding, OnInit } from '@angular/core';
 import { SwUpdate } from '../../node_modules/@angular/service-worker';
+import { Router, NavigationEnd } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -11,8 +12,16 @@ export class AppComponent implements OnInit {
   // title = 'app';
 
   constructor(
+    private _router: Router,
     private swUpdate: SwUpdate
-  ) { }
+  ) {
+    this._router.events.subscribe(event => {
+      if (event instanceof NavigationEnd) {
+        (<any>window).ga('set', 'page', event.urlAfterRedirects);
+        (<any>window).ga('send', 'pageview');
+      }
+    });
+  }
 
   ngOnInit() {
     if (this.swUpdate.isEnabled) {

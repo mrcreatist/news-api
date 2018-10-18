@@ -2,17 +2,18 @@
 @import "feed/feed.component";
 @import "detail/detail.component";
 @import "common/carry-components/carry-component";
+@import "./_theme/theme";
 
 .app_container {
   margin-top: 70px;
 }
 
 p::selection {
-  background: yellow;
+  background: $primary-color;
 }
 
 h1::selection {
-  background:yellow;
+  background:$primary-color;
 }
 
 // .add_prompt {

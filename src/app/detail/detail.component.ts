@@ -1,7 +1,8 @@
-import { Component, OnInit, HostBinding, Input, Output, EventEmitter } from '@angular/core';
-import { NewsDetailService } from '../common/news-detail.service';
-import { Router } from '@angular/router';
-import { Location } from '@angular/common';
+import { Component        , OnInit, HostBinding, Input, Output, EventEmitter } from '@angular/core'                   ;
+import { NewsDetailService                                                   } from '../_services/news-detail.service';
+import { Router                                                              } from '@angular/router'                 ;
+import { Location                                                            } from '@angular/common'                 ;
+import { NewsCarryService } from '../_services/news-carry.service';
 
 @Component({
   selector: 'app-detail',
@@ -14,9 +15,12 @@ export class DetailComponent implements OnInit {
   @Output() returnPreviousEvent = new EventEmitter<any>();
 
   detail: any;
+  moreNews: any;
 
   constructor(
     private _newsDetail: NewsDetailService,
+    private _newsCarry: NewsCarryService,
+
     private _router: Router,
     private _location: Location
   ) { }
@@ -24,6 +28,12 @@ export class DetailComponent implements OnInit {
   ngOnInit() {
     window.scroll(0, 0);
     this.detail = this._newsDetail.getNewsDetail();
+    this.moreNews = this._newsCarry.excludeNewsFromArray(this.detail);
+
+    // if no data then redirect home
+    if (this.detail.source.name === '') {
+      this.gotoFeed();
+    }
   }
 
   goBack() {
@@ -41,6 +51,14 @@ export class DetailComponent implements OnInit {
   }
 
   gotoFeed() {
-    this._router.navigateByUrl('/');
+    this._router.navigateByUrl('/feed');
+  }
+
+  doIntentOnNewsClick(value: any) {
+    if (value.clicked) {
+      this._newsDetail.setNewsDetail(value.data);
+      this.ngOnInit();
+    }
+
   }
 }

@@ -1,5 +1,4 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { DomSanitizer } from '@angular/platform-browser';
 
 @Pipe({ name: 'ellipsis' })
 export class EllipsisPipe implements PipeTransform {

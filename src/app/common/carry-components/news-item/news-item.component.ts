@@ -1,5 +1,5 @@
 import { Component, OnInit, HostBinding, Input, Output, EventEmitter } from '@angular/core';
-import { NewsDetailService } from '../../news-detail.service';
+import { NewsDetailService } from '../../../_services/news-detail.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -25,7 +25,8 @@ export class NewsItemComponent implements OnInit {
     this._newsDetail.setNewsDetail(this.data);
     if (this.getClickEvent) {
       this.catchClickEvent.emit({
-        clicked: true
+        clicked: true,
+        data: this.data
       });
     } else {
       this._router.navigateByUrl('/detail');

@@ -1,11 +1,11 @@
 import { SwPush } from '@angular/service-worker';
 import { Component, OnInit, HostBinding } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { NewsApiService } from '../common/news-api.service';
+import { NewsApiService } from '../_services/news-api.service';
 import { Router } from '@angular/router';
-import { NewsDetailService } from '../common/news-detail.service';
-import { NewsParamsService } from '../common/news-params.service';
-import { IpService } from '../common/ip.service';
+import { NewsDetailService } from '../_services/news-detail.service';
+import { NewsParamsService } from '../_services/news-params.service';
+import { IpService } from '../_services/ip.service';
+import { NewsCarryService } from '../_services/news-carry.service';
 
 @Component({
   selector: 'app-feed',
@@ -33,21 +33,12 @@ export class FeedComponent implements OnInit {
   constructor(
     private _newsParams: NewsParamsService,
     private _newsapi: NewsApiService,
-    private _newsDetail: NewsDetailService,
-    private _ipService: IpService,
-    private _router: Router,
+    private _newsCarry: NewsCarryService,
+
     private swPush: SwPush
   ) { }
 
   ngOnInit() {
-    // adding value for the newsPageSizeArray list
-    let i = 0;
-    while (i !== 20) {
-      // this.paginationList.push(i + 1);
-      this.newsPageSizeArray.push(i + 1);
-      i++;
-    }
-
     // setting up the initial config for the news service
     this._newsParams.newsSource.subscribe(
       (res: any) => {
@@ -55,7 +46,7 @@ export class FeedComponent implements OnInit {
           this.showNews = false;
           this._newsapi.resetRequestParameter();
           this._newsapi.setParam('q', res.search);
-          this._newsapi.setParam('sources', res.source);
+          // this._newsapi.setParam('sources', res.source);
           this._newsapi.setParam('language', res.language);
           this._newsapi.setParam('sortBy', res.sortBy);
           this._newsapi.setParam('pageSize', this.currentNewsPerPage);
@@ -63,7 +54,7 @@ export class FeedComponent implements OnInit {
 
           // assigning value to variables
           this.country = res.country;
-          this.sourceName = res.sourceName;
+          // this.sourceName = res.sourceName;
 
           // get the parametrised news
           this.getPosts();
@@ -79,16 +70,23 @@ export class FeedComponent implements OnInit {
         this.posts = res.articles;
         this.posts.length === 0 ? this.displayErrorMessage() : this.showNews = true;
 
+        // setting data into news carry
+        this._newsCarry.resetNewsArray();
+        for (let i = 0; i < (this.posts.length > this._newsCarry.newsToCarry ? this._newsCarry.newsToCarry : this.posts.length); i++) {
+          this._newsCarry.addNewsInArray(this.posts[i]);
+        }
+
         // calculating total number of pages
         this.paginationArray = Math.ceil(this.totalNumberOfNews / this.currentNewsPerPage);
 
         // resetting PaginationList
         this.paginationList = [];
 
+        // adding news per page as consecutive list
+        this.setNewsPerPageList();
+
         // adding values to the paginationList array from 0 to 'n'
-        for (let i = 0; i < this.paginationArray; i++) {
-          this.paginationList.push(i + 1);
-        }
+        this.addPaginationArrayValues();
       },
       (err: any) => {
         this.displayErrorMessage();
@@ -127,5 +125,20 @@ export class FeedComponent implements OnInit {
     this.currentNewsPerPage = event.target.value;
     this._newsapi.setParam('pageSize', event.target.value);
     this.getPosts();
+  }
+
+  setNewsPerPageList() {
+    this.newsPageSizeArray = [];
+    let x = 0;
+    while (x !== (this.totalNumberOfNews > 20 ? 20 : this.totalNumberOfNews)) {
+      this.newsPageSizeArray.push(x + 1);
+      x++;
+    }
+  }
+
+  addPaginationArrayValues() {
+    for (let i = 0; i < this.paginationArray; i++) {
+      this.paginationList.push(i + 1);
+    }
   }
 }
