@@ -1,5 +1,4 @@
 /* You can add global styles to this file, and also import other style files */
-@import "app/app.component";
 @import url('https://fonts.googleapis.com/css?family=Playfair+Display');
 @import url('https://fonts.googleapis.com/css?family=Karla');
 @import url('https://fonts.googleapis.com/css?family=Montserrat');
@@ -11,3 +10,6 @@ body {
   // font-family: 'Montserrat', sans-serif;
   margin: 0;
 }
+
+@import './assets/library/style/styleLib.scss';
+@import "./app/app.component";

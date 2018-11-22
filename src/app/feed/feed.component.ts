@@ -22,11 +22,16 @@ export class FeedComponent implements OnInit {
   posts = [];
   paginationList = [];
   newsPageSizeArray = [];
+  headingText = {
+    topHeadline: 'Top Headlines',
+    everything: 'Everything'
+  };
 
   totalNumberOfNews = 0;
   selectedPage = 1;
   currentNewsPerPage = 10;
   paginationArray = 0;
+  headingTextToShow: string;
 
   showNews = false;
 
@@ -42,23 +47,24 @@ export class FeedComponent implements OnInit {
     // setting up the initial config for the news service
     this._newsParams.newsSource.subscribe(
       (res: any) => {
-        if (res.source !== '') {
-          this.showNews = false;
-          this._newsapi.resetRequestParameter();
-          this._newsapi.setParam('q', res.search);
-          // this._newsapi.setParam('sources', res.source);
-          this._newsapi.setParam('language', res.language);
-          this._newsapi.setParam('sortBy', res.sortBy);
-          this._newsapi.setParam('pageSize', this.currentNewsPerPage);
-          this._newsapi.setParam('page', this.selectedPage);
+        this.headingTextToShow = res.source !== '' ? this.headingText.everything : this.headingText.topHeadline;
+        this.sourceName = res.sourceName;
 
-          // assigning value to variables
-          this.country = res.country;
-          // this.sourceName = res.sourceName;
+        this.showNews = false;
+        this._newsapi.resetRequestParameter();
+        this._newsapi.setParam('q', res.search);
+        this._newsapi.setParam('sources', res.source);
+        this._newsapi.setParam('language', res.language);
+        this._newsapi.setParam('sortBy', res.sortBy);
+        this._newsapi.setParam('pageSize', this.currentNewsPerPage);
+        this._newsapi.setParam('page', this.selectedPage);
 
-          // get the parametrised news
-          this.getPosts();
-        }
+        // assigning value to variables
+        this.country = res.country;
+        // this.sourceName = res.sourceName;
+
+        // get the parametrised news
+        this.getPosts();
       }
     );
   }

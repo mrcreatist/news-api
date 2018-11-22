@@ -1,11 +1,8 @@
-<div class="load_container" *ngIf="!showNews">
-  <img src="assets/loader.gif" alt="infinite_loader">
-  <p id="load_text">Loading news</p>
-</div>
+<app-loader *ngIf="!showNews"></app-loader>
 
 <div class="news_item_container" *ngIf="showNews">
   <div class="content_type_header">
-    <p class="content_text">Top Headlines</p>
+    <p class="content_text">{{headingTextToShow}}</p>
     @
     <p class="content_text">{{country}}</p>
     <p class="source_text" *ngIf="sourceName !== ''">{{sourceName}}</p>
@@ -16,6 +13,11 @@
   </div>
 
   <div class="bottom_navigation">
+    <!-- <span>
+      <button><i class="material-icons">keyboard_arrow_left</i> Previous</button>
+      <button>Next <i class="material-icons">keyboard_arrow_right</i></button>
+    </span> -->
+
     <span>
       <p>
         News per Page:
@@ -26,12 +28,13 @@
     </span>
     <span>
       <p>
-        Page 
+        Page
         <select (change)="showNewsAccordingToSelectedPage($event)" [(value)]="selectedPage">
           <option *ngFor="let pageNumber of paginationList" value="{{pageNumber}}">{{pageNumber}}</option>
         </select>
         of {{paginationArray}}
       </p>
     </span>
+
   </div>
 </div>

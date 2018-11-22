@@ -16,6 +16,8 @@ import { SortPipe             } from './common/sort.pipe'                       
 import { CarryComponentModule } from './common/carry-components/carry-component.module';
 import { NewsCarryService     } from './_services/news-carry.service';
 import { LandingComponent } from './landing/landing.component'                  ;
+// import { AngularFireModule } from '@angular/fire';
+// import { MessagingService } from './_services/messaging.service';
 
 @NgModule({
   declarations: [
@@ -32,6 +34,7 @@ import { LandingComponent } from './landing/landing.component'                  
     AppRoutingModule,
     HttpClientModule,
     CarryComponentModule,
+    // AngularFireModule,
     ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [
@@ -39,7 +42,8 @@ import { LandingComponent } from './landing/landing.component'                  
     NewsParamsService,
     NewsCarryService,
     IpService,
-    SortPipe
+    SortPipe,
+    // MessagingService
   ],
   bootstrap: [AppComponent]
 })

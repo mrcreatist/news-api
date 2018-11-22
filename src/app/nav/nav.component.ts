@@ -152,7 +152,7 @@ export class NavComponent implements OnInit {
 
           // passing the source[0] to the BehaviourSubject service
           this.setSource({ target: { value: this.sourceListByCountry[0].id } });
-          this._newsParams.setNewsSource(this.selectedParams);
+          // this._newsParams.setNewsSource(this.selectedParams);
         });
       },
       (error: any) => { }

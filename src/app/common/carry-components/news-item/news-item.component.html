@@ -1,7 +1,7 @@
 <div class="news_item">
     <!-- *ngIf="showPost(post, i)" -->
   <span (click)="setNewsDetailIntoService()">
-    <img src="{{data.urlToImage === null ? 'assets/default.png' : data.urlToImage}}" alt="article_image">
+    <img src="{{data.urlToImage === null ? 'assets/default.png' : data.urlToImage}}">
     <div class="content_holder">
       <p class="content">{{data.title}}</p>
       <span class="bottom_section">
