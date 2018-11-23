@@ -3,13 +3,14 @@
 @import url('https://fonts.googleapis.com/css?family=Karla');
 @import url('https://fonts.googleapis.com/css?family=Montserrat');
 
+@import './assets/library/style/styleLib.scss';
+
 body {
-  background-color: white;
+  background-color: $theme-white;
   // font-family: 'Playfair Display', serif;
   font-family: 'Karla', sans-serif;
   // font-family: 'Montserrat', sans-serif;
   margin: 0;
 }
 
-@import './assets/library/style/styleLib.scss';
 @import "./app/app.component";

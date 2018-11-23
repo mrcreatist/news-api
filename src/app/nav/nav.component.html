@@ -2,7 +2,51 @@
   <div class="nav_container">
     <i class="material-icons" (click)="menuToggler()">notes</i>
     <span>
-      <img draggable="false" src="assets/newspaper.svg" alt="news-point-logo">
+      <!-- <img draggable="false" src="assets/newspaper.svg" alt="news-point-logo"> -->
+      <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 32 32" style="enable-background:new 0 0 32 32;" xml:space="preserve">
+<g>
+	<g>
+		<path style="fill:#010002;" d="M28,7V3H0v22c0,0,0,4,4,4h25c0,0,3-0.062,3-4V7H28z M4,27c-2,0-2-2-2-2V5h24v20
+			c0,0.921,0.284,1.559,0.676,2H4z"/>
+		<rect x="4" y="9" style="fill:#010002;" width="20" height="2"/>
+		<rect x="15" y="21" style="fill:#010002;" width="7" height="2"/>
+		<rect x="15" y="17" style="fill:#010002;" width="9" height="2"/>
+		<rect x="15" y="13" style="fill:#010002;" width="9" height="2"/>
+		<rect x="4" y="13" style="fill:#010002;" width="9" height="10"/>
+	</g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+      </svg>
       <p>.</p>
     </span>
     <i class="material-icons" (click)="filterToggler()">filter_list</i>
@@ -13,8 +57,8 @@
       <strong>This project is currently in progress!</strong>
     </p>
 
-    <p style="width: fit-content; background-color: yellow">Hey Viewer,</p>
-    <p style="width: fit-content; background-color: yellow">This is my garage project which aims to serve news to the audience with a minimal design.</p>
+    <p class="highlight_text">Hey Viewer,</p>
+    <p class="highlight_text">This is my garage project which aims to serve news to the audience with a minimal design.</p>
     <p>This is a
       <strong>mobile first design</strong> currently, so for best experience switch to mobile.</p>
     <div class="about_dev">
@@ -23,7 +67,8 @@
         <p class="name">Abhishek Verma</p>
         <p class="designation">Front-end Developer</p>
         <div class="social_media">
-          <img *ngFor="let icon of sociaIcons" src="{{icon.location}}" (click)="gotoSocialLink(icon)" draggable="false" title="AV's {{icon.name}}" alt="AV_icon">
+          <!-- <img *ngFor="let icon of sociaIcons" src="{{icon.location}}" (click)="gotoSocialLink(icon)" draggable="false" title="AV's {{icon.name}}" alt="AV_icon"> -->
+          <fa-icon *ngFor="let icon of sociaIcons" [icon]="['fab', icon.svgIcon]" (click)="gotoSocialLink(icon)" draggable="false" title="AV's {{icon.name}}"></fa-icon>
         </div>
       </div>
     </div>

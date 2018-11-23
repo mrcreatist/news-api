@@ -10,10 +10,12 @@
   }
   
   p::selection {
-    background-color: yellow;
+    background-color: $primary-color;
+    color: $theme-black;
   }
   
   h1::selection {
-    background:yellow;
+    background-color: $primary-color;
+    color: $theme-black;
   }
 }

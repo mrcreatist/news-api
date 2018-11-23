@@ -16,8 +16,22 @@ import { SortPipe             } from './common/sort.pipe'                       
 import { CarryComponentModule } from './common/carry-components/carry-component.module';
 import { NewsCarryService     } from './_services/news-carry.service';
 import { LandingComponent } from './landing/landing.component'                  ;
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { faCoffee } from '@fortawesome/free-solid-svg-icons';
+
+import { faTwitter, faFacebook, faLinkedin, faInstagram, faGithub } from '@fortawesome/free-brands-svg-icons';
+
 // import { AngularFireModule } from '@angular/fire';
 // import { MessagingService } from './_services/messaging.service';
+
+library.add(faCoffee);
+
+library.add(faTwitter);
+library.add(faFacebook);
+library.add(faLinkedin);
+library.add(faInstagram);
+library.add(faGithub);
 
 @NgModule({
   declarations: [
@@ -35,6 +49,7 @@ import { LandingComponent } from './landing/landing.component'                  
     HttpClientModule,
     CarryComponentModule,
     // AngularFireModule,
+    FontAwesomeModule,
     ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [

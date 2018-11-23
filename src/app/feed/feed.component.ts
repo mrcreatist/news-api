@@ -59,9 +59,13 @@ export class FeedComponent implements OnInit {
         this._newsapi.setParam('pageSize', this.currentNewsPerPage);
         this._newsapi.setParam('page', this.selectedPage);
 
+        // only for top-headlines
+        if (this.headingTextToShow === this.headingText.topHeadline) {
+          this._newsapi.setParam('country', res.countryCode);
+        }
+
         // assigning value to variables
         this.country = res.country;
-        // this.sourceName = res.sourceName;
 
         // get the parametrised news
         this.getPosts();

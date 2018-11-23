@@ -13,8 +13,7 @@ export class IpService {
   countryCode = this.countrySource.asObservable();
 
   constructor(
-    private _http: HttpClient,
-    private _newsParmas: NewsParamsService
+    private _http: HttpClient
   ) { }
 
   getUserLocationDetails() {

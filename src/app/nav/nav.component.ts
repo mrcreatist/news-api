@@ -36,34 +36,42 @@ export class NavComponent implements OnInit {
     pageSize: this._newsParams.pageSize,
     page: this._newsParams.page,
     country: '',
+    countryCode: '',
     sourceName: ''
   };
+
+  // faCoffee = faCoffee;
 
   sociaIcons = [
     {
       name: 'Facebook',
       location: 'assets/social-media/facebook.svg',
-      redirectTo: 'https://www.facebook.com/MrCreatist/'
+      redirectTo: 'https://www.facebook.com/MrCreatist/',
+      svgIcon: 'facebook'
     },
     {
       name: 'Twitter',
       location: 'assets/social-media/twitter.svg',
-      redirectTo: 'https://twitter.com/mrcreatist'
+      redirectTo: 'https://twitter.com/mrcreatist',
+      svgIcon: 'twitter'
     },
     {
       name: 'Instagram',
       location: 'assets/social-media/instagram.svg',
-      redirectTo: 'https://www.instagram.com/mrcreatist/'
+      redirectTo: 'https://www.instagram.com/mrcreatist/',
+      svgIcon: 'instagram'
     },
     {
       name: 'LinkedIn',
       location: 'assets/social-media/linkedin.svg',
-      redirectTo: 'https://www.linkedin.com/in/mrcreatist/'
+      redirectTo: 'https://www.linkedin.com/in/mrcreatist/',
+      svgIcon: 'linkedin'
     },
     {
       name: 'GitHub',
       location: 'assets/social-media/github.svg',
-      redirectTo: 'https://github.com/MrCreatist'
+      redirectTo: 'https://github.com/MrCreatist',
+      svgIcon: 'github'
     },
   ];
 
@@ -130,10 +138,14 @@ export class NavComponent implements OnInit {
           // Sorting countries in ascending order
           this.sourceCountries = this._sort.transform(this.sourceCountries, 'asc');
 
+
+
+
           // getting user location details
           this._ipService.getUserLocationDetails();
           this._ipService.countryCode.subscribe(
             (resp: any) => {
+
               // setting user's location country code
               this.country = this.countryExists(String(resp).toLowerCase()) ? String(resp).toLowerCase() : 'in';
 
@@ -141,6 +153,7 @@ export class NavComponent implements OnInit {
               for (const country of this.sourceCountries) {
                 if (country.code === this.country) {
                   this.selectedParams.country = country.name;
+                  this.selectedParams.countryCode = this.country;
                 }
               }
               this.setCountry({ target: { value: this.country } });

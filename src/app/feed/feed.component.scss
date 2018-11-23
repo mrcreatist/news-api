@@ -13,7 +13,7 @@
 
     p {
       font-weight: 500;
-      color: black;
+      color: $theme-black;
       text-transform: uppercase;
       margin: auto;
       width: fit-content;
@@ -34,7 +34,8 @@
       display: flex;
       flex-direction: column;
       justify-content: center;
-      background-color: yellow;
+      background-color: $primary-color;
+      color: $theme-black;
 
       .content_text {
         margin: 0;
@@ -50,8 +51,9 @@
 
     .news_item_holder {
       width: 96%;
-      background-color: white;
-      filter: drop-shadow(0 2px 4px #cccccc);
+      background-color: $theme-white;
+      color: $theme-black;
+      filter: drop-shadow(0 2px 4px $shadow-color);
       border-radius: 6px;
       // position: absolute;
       left: 0;
@@ -65,7 +67,8 @@
       flex-direction: row;
       margin: 0 2em;
       padding: 0 2em;
-      background-color: yellow;
+      background-color: $primary-color;
+      color: $theme-black;
       margin: 1em;
       border-radius: 6px;
       justify-content: space-between;
@@ -75,14 +78,14 @@
         justify-content: space-between;
 
         button {
-          background-color: yellow;
-          color: black;
+          background-color: $primary-color;
+          color: $theme-black;
           padding: 4px 10px;
           border-radius: 10px;
           align-items: center;
           display: flex;
           border: 0;
-          filter: drop-shadow(0 2px 4px #cccccc);
+          filter: drop-shadow(0 2px 4px $shadow-color);
           width: 8em;
           justify-content: center;
         }
@@ -94,7 +97,7 @@
         select {
           border-radius: 6px;
           padding: 5px;
-          border: 1px solid #cccccc;
+          border: 1px solid $shadow-color;
           width: 5em;
         }
       }

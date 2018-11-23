@@ -19,7 +19,7 @@
         height: 100px;
         object-fit: cover;
         border-radius: 8px;
-        filter: drop-shadow(0px 6px 6px #cccccc);
+        filter: drop-shadow(0px 6px 6px $shadow-color);
         margin: 0;
         margin-top: 5px;
         margin-bottom: 0;
@@ -37,6 +37,7 @@
         width: 100%;
         display: flex;
         flex-direction: column;
+        color: $theme-black;
 
         .content {
           margin: 0;
@@ -55,12 +56,14 @@
           transition: 0.2s;
           justify-content: space-between;
           background-color: transparent;
+          color: $theme-black;
           margin-top: 10px;
 
           .source {
             margin: 4px 0;
             text-transform: uppercase;
-            background-color: yellow;
+            background-color: $primary-color;
+            color: $theme-black;
             padding: 0 3px;
           }
 
@@ -73,7 +76,8 @@
 
       &:hover {
         cursor: pointer;
-        background-color: #f3f3f3; // background: linear-gradient(to bottom right, white, red);
+        background-color: $hover-color; // background: linear-gradient(to bottom right, white, red);
+        color: $theme-black;
 
         img {
           margin: 0;
@@ -93,7 +97,7 @@
       width: 92%;
       margin: auto;
       padding: 0;
-      border-bottom: 1px solid #cccccc;
+      border-bottom: 1px solid $shadow-color;
     }
   }
 }

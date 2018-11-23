@@ -12,6 +12,7 @@ export class NewsParamsService {
     pageSize: this.pageSize,
     page: this.page,
     country: 'India',
+    countryCode: 'in',
     sourceName: ''
   };
 
