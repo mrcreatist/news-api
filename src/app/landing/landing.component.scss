@@ -5,11 +5,11 @@
             // justify-content: center;
             display: flex;
             flex-direction: column;
-            background-color: $primary-color;
+            background-color: $primary;
             height: 30em;
 
             h1 {
-                color: $theme-black;
+                color: $secondary;
                 text-align: center;
                 font-size: 2em;
                 font-weight: bold;
@@ -19,22 +19,27 @@
             button {
                 width: 10em;
                 margin: 0 auto;
-                background: $theme-black;
-                color: $primary-color;
+                background: $secondary;
+                color: $primary;
                 border: 0;
                 padding: 12px;
                 border-radius: 2em;
                 cursor: pointer;
                 font-weight: bold;
                 text-transform: uppercase;
+
+                &:hover {
+                    background-color: $secondary-varient;
+                    // color: $secondary;
+                }
             }
         }
 
         .features_container {
-            background-color: $theme-white;
+            background-color: $tertiary;
             width: 90%;
             margin: -4em auto 0;
-            filter: drop-shadow(0 2px 4px $shadow-color);
+            filter: drop-shadow(0 2px 4px $shadow);
             padding: 0.5em 1em;
             height: fit-content;
 
@@ -43,8 +48,8 @@
                 flex-direction: row;
                 margin: 0 1em;
                 padding: 1em 0;
-                border-bottom: 1px solid $shadow-color;
-                color: $icon-color;
+                border-bottom: 1px solid $shadow;
+                color: $shadow-varient;
 
                 &:last-child {
                     border-bottom: 0;
@@ -52,10 +57,10 @@
 
                 svg {
                     font-size: 2em;
-                    color: $theme-black;
+                    color: $secondary;
                     margin-right: 24px;
-                    color: $feature-head;
-                    // color: $icon-color;
+                    color: $secondary-varient;
+                    // color: $shadow-varient;
                 }
 
                 span {
@@ -66,7 +71,7 @@
                         margin: 0;
                         margin-bottom: 2px;
                         text-transform: uppercase;
-                        color: $feature-head;
+                        color: $secondary-varient;
                     }
                     p {
                         font-size: 14px;
@@ -78,7 +83,7 @@
 
         .about_container {
             background-color: #f5f5f5;
-            color: $theme-black;
+            color: $secondary;
             margin-top: 2em;
             padding: 1em;
 

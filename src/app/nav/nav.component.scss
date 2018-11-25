@@ -13,8 +13,8 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      background-color: $primary-color;
-      color: $theme-black;
+      background-color: $primary;
+      color: $secondary;
       opacity: 0.98;
       i {
         margin: 1em;
@@ -30,10 +30,10 @@
           height: 30px;
           g {
             path {
-              fill: $theme-black;
+              fill: $secondary;
             }
             rect {
-              fill: $theme-black;
+              fill: $secondary;
             }
           }
         }
@@ -46,25 +46,25 @@
     }
 
     .menu {
-      background-color: $theme-white;
-      color: $theme-black;
+      background-color: $tertiary;
+      color: $secondary;
       opacity: 0.98;
       padding: 1em 1.4em;
-      border-bottom: 6px solid $primary-color;
+      border-bottom: 6px solid $primary;
       overflow: hidden;
       height: fit-content;
 
       .highlight_text {
         width: fit-content;
-        background-color: $primary-color;
+        background-color: $primary;
         padding: 4px;
       }
       .about_dev {
         display: flex;
         align-items: center;
         margin-top: 2em;
-        border-top: 1px solid $shadow-color;
-        background: $theme-white;
+        border-top: 1px solid $shadow;
+        background: $tertiary;
         padding: 8px;
         cursor: pointer;
         img {
@@ -86,8 +86,8 @@
           }
           .designation {
             width: fit-content;
-            background-color: $primary-color;
-            color: $theme-black;
+            background-color: $primary;
+            color: $secondary;
             text-transform: uppercase;
             font-size: 12px;
             font-weight: 600;
@@ -107,7 +107,7 @@
               width: 30px;
               height: 30px;
               font-size: 2em;
-              color: $theme-black;
+              color: $secondary;
             }
           }
         }
@@ -116,16 +116,16 @@
         display: flex;
         input {
           width: 100%;
-          border: 1px solid $theme-black;
+          border: 1px solid $secondary;
           padding: 1em;
           font-style: italic;
-          background-color: $theme-white;
-          color: $theme-black;
+          background-color: $tertiary;
+          color: $secondary;
         }
         button {
-          border: 1px solid $primary-color;
-          background-color: $primary-color;
-          color: $theme-black;
+          border: 1px solid $primary;
+          background-color: $primary;
+          color: $secondary;
           padding: 1em;
         }
       }
@@ -136,7 +136,7 @@
         hr {
           margin: 0;
           width: 100%;
-          background-color: $divider-color;
+          background-color: $shadow-varient;
           height: 1px;
           border: 0;
         }
@@ -147,13 +147,13 @@
       .category_section {
         padding: 1em;
         border-radius: 12px;
-        background-color: $theme-white;
-        color: $theme-black;
-        border: 1px solid $shadow-color;
+        background-color: $tertiary;
+        color: $secondary;
+        border: 1px solid $shadow;
         .highlight {
           width: fit-content;
-          background-color: $primary-color;
-          color: $theme-black;
+          background-color: $primary;
+          color: $secondary;
         }
         select {
           background-color: transparent;
@@ -162,25 +162,25 @@
           width: 100%;
           margin: 0;
           border: 0;
-          border-bottom: 1px solid $theme-black;
-          color: $theme-black;
+          border-bottom: 1px solid $secondary;
+          color: $secondary;
         }
         .filter_button {
           border: 0;
           padding: 1em 4em;
           display: block;
           margin: 1em auto 0;
-          color: $theme-black;
-          background-color: $primary-color;
-          color: $theme-black;
+          color: $secondary;
+          background-color: $primary;
+          color: $secondary;
           border-radius: 2em;
           font-weight: bold;
           text-transform: uppercase;
           font-size: 15px;
           transition: 0.2s;
-          filter: drop-shadow(0 4px 2px $shadow-color);
+          filter: drop-shadow(0 4px 2px $shadow);
           &:hover {
-            filter: drop-shadow(0 2px 2px $shadow-color);
+            filter: drop-shadow(0 2px 2px $shadow);
           }
         }
       }
