@@ -1,4 +1,25 @@
-<p>
-  landing works!
-</p>
-<button (click)="gotoFeed()">Goto Feed</button>
+<div class="landing_container">
+
+  <!-- welcome container -->
+  <div class="welcome_section">
+    <h1>Welcome to {{appName}}</h1>
+    <button (click)="gotoFeed()">Goto Feed</button>
+  </div>
+
+  <!-- features container -->
+  <div class="features_container">
+    <div class="feature" *ngFor="let feature of featureList">
+      <i class="{{feature.iconType}} fa-{{feature.icon}}"></i>
+      <span>
+        <h2>{{feature.feature}}</h2>
+        <p>{{feature.description}}</p>
+      </span>
+    </div>
+  </div>
+
+  <!-- About Section -->
+  <!-- <div class="about_container">
+    <p>Developed By AV</p>
+  </div> -->
+
+</div>

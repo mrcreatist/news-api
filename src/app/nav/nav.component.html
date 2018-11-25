@@ -7,13 +7,13 @@
 	 viewBox="0 0 32 32" style="enable-background:new 0 0 32 32;" xml:space="preserve">
 <g>
 	<g>
-		<path style="fill:#010002;" d="M28,7V3H0v22c0,0,0,4,4,4h25c0,0,3-0.062,3-4V7H28z M4,27c-2,0-2-2-2-2V5h24v20
+		<path d="M28,7V3H0v22c0,0,0,4,4,4h25c0,0,3-0.062,3-4V7H28z M4,27c-2,0-2-2-2-2V5h24v20
 			c0,0.921,0.284,1.559,0.676,2H4z"/>
-		<rect x="4" y="9" style="fill:#010002;" width="20" height="2"/>
-		<rect x="15" y="21" style="fill:#010002;" width="7" height="2"/>
-		<rect x="15" y="17" style="fill:#010002;" width="9" height="2"/>
-		<rect x="15" y="13" style="fill:#010002;" width="9" height="2"/>
-		<rect x="4" y="13" style="fill:#010002;" width="9" height="10"/>
+		<rect x="4" y="9" width="20" height="2"/>
+		<rect x="15" y="21" width="7" height="2"/>
+		<rect x="15" y="17" width="9" height="2"/>
+		<rect x="15" y="13" width="9" height="2"/>
+		<rect x="4" y="13" width="9" height="10"/>
 	</g>
 </g>
 <g>
@@ -47,6 +47,7 @@
 <g>
 </g>
       </svg>
+
       <p>.</p>
     </span>
     <i class="material-icons" (click)="filterToggler()">filter_list</i>
@@ -68,7 +69,7 @@
         <p class="designation">Front-end Developer</p>
         <div class="social_media">
           <!-- <img *ngFor="let icon of sociaIcons" src="{{icon.location}}" (click)="gotoSocialLink(icon)" draggable="false" title="AV's {{icon.name}}" alt="AV_icon"> -->
-          <fa-icon *ngFor="let icon of sociaIcons" [icon]="['fab', icon.svgIcon]" (click)="gotoSocialLink(icon)" draggable="false" title="AV's {{icon.name}}"></fa-icon>
+          <i *ngFor="let icon of sociaIcons" class="fab fa-{{icon.svgIcon}}" (click)="gotoSocialLink(icon)" draggable="false" title="AV's {{icon.name}}"></i>
         </div>
       </div>
     </div>

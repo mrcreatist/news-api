@@ -1,8 +1,3 @@
-@import "nav/nav.component";
-@import "feed/feed.component";
-@import "detail/detail.component";
-@import "common/carry-components/carry-component";
-
 .app-root {
 
   .app_container {
@@ -18,4 +13,16 @@
     background-color: $primary-color;
     color: $theme-black;
   }
+
+  h2::selection {
+    background-color: $primary-color;
+    color: $theme-black;
+  }
 }
+
+@import "nav/nav.component";
+@import "feed/feed.component";
+@import "detail/detail.component";
+@import "common/carry-components/carry-component";
+@import "./landing/landing.component";
+@import "./footer/footer.component";
