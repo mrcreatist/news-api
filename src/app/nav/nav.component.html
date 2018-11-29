@@ -54,22 +54,28 @@
   </div>
 
   <div class="menu" *ngIf="menuToggle">
+
     <p>
       <strong>This project is currently in progress!</strong>
     </p>
 
     <p class="highlight_text">Hey Viewer,</p>
     <p class="highlight_text">This is my garage project which aims to serve news to the audience with a minimal design.</p>
-    <p>This is a
-      <strong>mobile first design</strong> currently, so for best experience switch to mobile.</p>
+    <p>This is a <strong>mobile first design</strong> currently, so for best experience switch to mobile.</p>
+
+    <div class="menu_list">
+      <button (click)="gotoHomepage()"><i class="material-icons">home</i>Goto Home page</button>
+    </div>
+
     <div class="about_dev">
       <img draggable="false" src="assets/AV_developer.jpeg" alt="AV_profile">
       <div class="name_section">
         <p class="name">Abhishek Verma</p>
         <p class="designation">Front-end Developer</p>
         <div class="social_media">
-          <!-- <img *ngFor="let icon of sociaIcons" src="{{icon.location}}" (click)="gotoSocialLink(icon)" draggable="false" title="AV's {{icon.name}}" alt="AV_icon"> -->
-          <i *ngFor="let icon of sociaIcons" class="fab fa-{{icon.svgIcon}}" (click)="gotoSocialLink(icon)" draggable="false" title="AV's {{icon.name}}"></i>
+          <span class="social_media_icon" *ngFor="let icon of sociaIcons" (click)="gotoSocialLink(icon)">
+              <i class="fab fa-{{icon.svgIcon}}" draggable="false" title="AV's {{icon.name}}"></i>
+          </span>
         </div>
       </div>
     </div>

@@ -3,12 +3,12 @@
   .app_container {
     margin-top: 70px;
   }
-  
+
   p::selection {
     background-color: $primary;
     color: $secondary;
   }
-  
+
   h1::selection {
     background-color: $primary;
     color: $secondary;

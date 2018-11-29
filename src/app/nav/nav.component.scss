@@ -9,6 +9,7 @@
     position: fixed;
     z-index: 10;
     width: 100%;
+
     .nav_container {
       display: flex;
       justify-content: space-between;
@@ -16,27 +17,33 @@
       background-color: $primary;
       color: $secondary;
       opacity: 0.98;
+
       i {
         margin: 1em;
         cursor: pointer;
         user-select: none;
       }
+
       span {
         display: flex;
         margin: 1em;
         user-select: none;
+
         svg {
           width: 30px;
           height: 30px;
+
           g {
             path {
               fill: $secondary;
             }
+
             rect {
               fill: $secondary;
             }
           }
         }
+
         p {
           font-size: 3em;
           margin: 0;
@@ -59,6 +66,33 @@
         background-color: $primary;
         padding: 4px;
       }
+
+      .menu_list {
+        button {
+          width: 100%;
+          background-color: #f3f3f3;
+          color: black;
+          padding: 2em;
+          border: 0;
+          text-transform: uppercase;
+          font-weight: bold;
+          font-family: 'Karla', sans-serif;
+          cursor: pointer;
+          align-items: center;
+          justify-content: center;
+          display: flex;
+          border-radius: 6px;
+
+          i {
+            margin-right: 10px;
+          }
+
+          &:hover {
+            background-color: $primary;
+          }
+        }
+      }
+
       .about_dev {
         display: flex;
         align-items: center;
@@ -67,23 +101,28 @@
         background: $tertiary;
         padding: 8px;
         cursor: pointer;
+
         img {
           border-radius: 50%;
           width: 64px;
           height: 64px;
         }
+
         .name_section {
           display: flex;
           flex-direction: column;
           margin-left: 1em;
+
           p {
             margin: 0;
           }
+
           .name {
             font-size: 18px;
             font-weight: bold;
             text-transform: uppercase;
           }
+
           .designation {
             width: fit-content;
             background-color: $primary;
@@ -92,28 +131,28 @@
             font-size: 12px;
             font-weight: 600;
           }
+
           .social_media {
             display: flex;
             margin-top: 10px;
-            img {
-              border-radius: 0;
-              width: 24px;
-              height: 24px;
-              margin-right: 10px;
-            }
 
-            svg {
-              padding-right: 6px;
-              width: 30px;
-              height: 30px;
-              font-size: 2em;
-              color: $secondary;
+            .social_media_icon {
+              svg {
+                padding-right: 6px;
+                width: 30px;
+                height: 30px;
+                font-size: 2em;
+                color: $secondary;
+                cursor: pointer;
+              }
             }
           }
         }
       }
+
       .search {
         display: flex;
+
         input {
           width: 100%;
           border: 1px solid $secondary;
@@ -122,6 +161,7 @@
           background-color: $tertiary;
           color: $secondary;
         }
+
         button {
           border: 1px solid $primary;
           background-color: $primary;
@@ -129,10 +169,12 @@
           padding: 1em;
         }
       }
+
       .divider {
         display: flex;
         align-items: center;
         margin: 1em 0;
+
         hr {
           margin: 0;
           width: 100%;
@@ -140,21 +182,25 @@
           height: 1px;
           border: 0;
         }
+
         p {
           margin: 1em;
         }
       }
+
       .category_section {
         padding: 1em;
         border-radius: 12px;
         background-color: $tertiary;
         color: $secondary;
         border: 1px solid $shadow;
+
         .highlight {
           width: fit-content;
           background-color: $primary;
           color: $secondary;
         }
+
         select {
           background-color: transparent;
           padding: 6px;
@@ -165,6 +211,7 @@
           border-bottom: 1px solid $secondary;
           color: $secondary;
         }
+
         .filter_button {
           border: 0;
           padding: 1em 4em;
@@ -179,6 +226,7 @@
           font-size: 15px;
           transition: 0.2s;
           filter: drop-shadow(0 4px 2px $shadow);
+
           &:hover {
             filter: drop-shadow(0 2px 2px $shadow);
           }

@@ -5,6 +5,7 @@ import { NewsParamsService } from '../_services/news-params.service';
 import { Router } from '../../../node_modules/@angular/router';
 import { IpService } from '../_services/ip.service';
 import { SortPipe } from '../common/sort.pipe';
+import * as global from '../globals';
 
 @Component({
   selector: 'app-nav',
@@ -42,38 +43,7 @@ export class NavComponent implements OnInit {
 
   // faCoffee = faCoffee;
 
-  sociaIcons = [
-    {
-      name: 'Facebook',
-      location: 'assets/social-media/facebook.svg',
-      redirectTo: 'https://www.facebook.com/MrCreatist/',
-      svgIcon: 'facebook'
-    },
-    {
-      name: 'Twitter',
-      location: 'assets/social-media/twitter.svg',
-      redirectTo: 'https://twitter.com/mrcreatist',
-      svgIcon: 'twitter'
-    },
-    {
-      name: 'Instagram',
-      location: 'assets/social-media/instagram.svg',
-      redirectTo: 'https://www.instagram.com/mrcreatist/',
-      svgIcon: 'instagram'
-    },
-    {
-      name: 'LinkedIn',
-      location: 'assets/social-media/linkedin.svg',
-      redirectTo: 'https://www.linkedin.com/in/mrcreatist/',
-      svgIcon: 'linkedin'
-    },
-    {
-      name: 'GitHub',
-      location: 'assets/social-media/github.svg',
-      redirectTo: 'https://github.com/MrCreatist',
-      svgIcon: 'github'
-    },
-  ];
+  sociaIcons = global.socialMedia;
 
   constructor(
     private _http: HttpClient,
@@ -262,5 +232,10 @@ export class NavComponent implements OnInit {
 
   gotoFeed() {
     this._router.navigateByUrl('/feed');
+  }
+
+  gotoHomepage() {
+    this.menuToggle = !this.menuToggle;
+    this._router.navigateByUrl('/');
   }
 }

@@ -10,6 +10,9 @@ export class LandingComponent implements OnInit {
   @HostBinding('class') LandingComponentClass = 'app-landing';
 
   appName = global.appName;
+  developerName = global.appDeveloper;
+  designation = global.designation;
+  workingPlace = global.worksAt;
 
   featureList = [
     {
@@ -61,6 +64,7 @@ export class LandingComponent implements OnInit {
       iconType: 'fas'
     }
   ];
+  sociaIcons = global.socialMedia;
 
   constructor(
     private _router: Router
@@ -71,6 +75,10 @@ export class LandingComponent implements OnInit {
 
   gotoFeed() {
     this._router.navigateByUrl('/feed');
+  }
+
+  gotoSocialLink(icon: any) {
+    window.open(icon.redirectTo, '_blank');
   }
 
 }

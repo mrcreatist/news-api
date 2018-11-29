@@ -18,8 +18,16 @@
   </div>
 
   <!-- About Section -->
-  <!-- <div class="about_container">
-    <p>Developed By AV</p>
-  </div> -->
+  <div class="about_container">
+    <img src="assets/AV_developer.jpeg" alt="AV_profile">
+    <h1>{{developerName}}</h1>
+    <p>{{designation}}</p>
+
+    <div class="social_media">
+        <span class="social_media_icon" *ngFor="let icon of sociaIcons" (click)="gotoSocialLink(icon)">
+            <i class="fab fa-{{icon.svgIcon}}" draggable="false" title="AV's {{icon.name}}"></i>
+        </span>
+      </div>
+  </div>
 
 </div>
