@@ -100,5 +100,40 @@
       padding: 0;
       border-bottom: 1px solid $shadow;
     }
+
+
+    @media screen and (min-width: $desktop-view) {
+      width: fit-content;
+
+      span {
+        width: 30em;
+        display: flex;
+        flex-direction: column;
+
+        img {
+          height: 18em;
+          min-width: 100%;
+          max-width: 100%;
+          width: 100%
+        }
+
+        .content_holder {
+          margin: 1em;
+          margin-top: -5em;
+          z-index: 2;
+          color: $tertiary;
+          width: 28em;
+
+          .bottom_section {
+            width: 100%;
+            color: $tertiary;
+          }
+        }
+      }
+
+      .bottom-border {
+        border-bottom: 0;
+      }
+    }
   }
 }

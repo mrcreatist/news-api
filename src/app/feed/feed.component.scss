@@ -70,6 +70,13 @@
           }
         }
       }
+
+      @media screen and (min-width: $desktop-view) {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
     }
 
     .bottom_navigation {

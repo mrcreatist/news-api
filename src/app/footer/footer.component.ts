@@ -1,5 +1,6 @@
 import { Component, OnInit, HostBinding } from '@angular/core';
 import { Router } from '@angular/router';
+import * as global from '../globals';
 
 @Component({
   selector: 'app-footer',
@@ -18,6 +19,8 @@ export class FooterComponent implements OnInit {
       url: '/feed'
     }
   ];
+
+  version = global.appVersion;
 
   constructor(
     private _router: Router

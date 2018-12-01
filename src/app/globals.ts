@@ -3,7 +3,6 @@ export const appVersion = '1.0';
 export const appDeveloper = 'Abhishek Verma';
 export const designation = 'Front end developer';
 export const worksAt = 'works at Nurtr';
-
 export const socialMedia = [
     {
         name: 'Facebook',

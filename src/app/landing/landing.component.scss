@@ -42,6 +42,8 @@
       filter: drop-shadow(0 2px 4px $shadow);
       padding: 0.5em 1em;
       height: fit-content;
+      display: flex;
+      flex-direction: column;
 
       .feature {
         display: flex;
@@ -50,6 +52,7 @@
         padding: 1em 0;
         border-bottom: 1px solid $shadow;
         color: $shadow-varient;
+        width: 100%;
 
         &:last-child {
           border-bottom: 0;
@@ -78,6 +81,32 @@
           p {
             font-size: 14px;
             margin: 0;
+          }
+        }
+      }
+
+      @media screen and (min-width: $desktop-view) {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+
+        .feature {
+          display: flex;
+          flex-direction: column;
+          border-bottom: 0;
+          align-items: center;
+
+          svg {
+            margin: 0;
+          }
+
+          span {
+            h2 {
+              text-align: center;
+            }
+            p {
+              text-align: center;
+            }
           }
         }
       }
