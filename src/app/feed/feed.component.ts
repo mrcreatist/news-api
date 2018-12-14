@@ -1,7 +1,7 @@
 import { SwPush } from '@angular/service-worker';
 import { Component, OnInit, HostBinding } from '@angular/core';
 import { NewsApiService } from '../_services/news-api.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { NewsDetailService } from '../_services/news-detail.service';
 import { NewsParamsService } from '../_services/news-params.service';
 import { IpService } from '../_services/ip.service';
@@ -23,8 +23,10 @@ export class FeedComponent implements OnInit {
   paginationList = [];
   newsPageSizeArray = [];
   headingText = {
-    topHeadline: 'Top Headlines',
-    everything: 'Everything'
+    topHeadline: 'top-headlines',
+    topHeadlineText: 'Top Headlines',
+    everything: 'everything',
+    everythingText: 'Everything'
   };
 
   totalNumberOfNews = 0;
@@ -39,11 +41,18 @@ export class FeedComponent implements OnInit {
     private _newsParams: NewsParamsService,
     private _newsapi: NewsApiService,
     private _newsCarry: NewsCarryService,
-
+    private _activateRoute: ActivatedRoute,
     private swPush: SwPush
   ) { }
 
   ngOnInit() {
+    this._activateRoute.params.subscribe(
+      (param: any) => {
+        this.headingTextToShow =
+          param.pageType === this.headingText.everything ? this.headingText.everythingText : this.headingText.topHeadlineText;
+      }
+    );
+
     // setting up the initial config for the news service
     this._newsParams.newsSource.subscribe(
       (res: any) => {
@@ -153,6 +162,6 @@ export class FeedComponent implements OnInit {
   }
 
   getMiniCardStatus(value: any) {
-    return value % 10 === 0 ? false : value === 1 ? false : !(value % 11 === 0);
+    return !(value % 10 === 0 || value % 10 === 1);
   }
 }

@@ -38,7 +38,7 @@
       color: $secondary;
 
       .content_container {
-        width: 30em;
+        width: 34em;
         margin: auto;
         display: flex;
         justify-content: space-between;
@@ -67,7 +67,9 @@
           }
         }
         .menu_container {
-          i {}
+          i {
+            cursor: pointer;
+          }
         }
       }
     }
@@ -79,9 +81,9 @@
       border-radius: 6px;
       left: 0;
       right: 0;
-      margin: -16em auto 1em auto;
+      margin: -15em auto 1em auto;
       overflow: hidden;
-      max-width: 64em;
+      max-width: 72em;
 
       app-news-item {
         &:last-child {
