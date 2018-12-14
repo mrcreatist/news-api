@@ -29,7 +29,7 @@ export class FeedComponent implements OnInit {
 
   totalNumberOfNews = 0;
   selectedPage = 1;
-  currentNewsPerPage = 10;
+  currentNewsPerPage = 40;
   paginationArray = 0;
   headingTextToShow: string;
 
@@ -150,5 +150,9 @@ export class FeedComponent implements OnInit {
     for (let i = 0; i < this.paginationArray; i++) {
       this.paginationList.push(i + 1);
     }
+  }
+
+  getMiniCardStatus(value: any) {
+    return value % 10 === 0 ? false : value === 1 ? false : !(value % 11 === 0);
   }
 }

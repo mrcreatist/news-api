@@ -28,38 +28,60 @@
     flex-direction: column;
 
     .content_type_header {
-      font-family: 'Crete Round', serif;
+      // font-family: 'Crete Round', serif;
       font-size: 2em;
-      padding: 6em 0 10em 1em;
+      padding: 3em 0 12em;
       display: flex;
       flex-direction: column;
       justify-content: center;
       background-color: $primary;
       color: $secondary;
 
-      .content_text {
-        margin: 0;
-        text-decoration: none;
-      }
+      .content_container {
+        width: 30em;
+        margin: auto;
+        display: flex;
+        justify-content: space-between;
 
-      .source_text {
-        font-size: 16px;
-        margin-top: 6em;
-        text-transform: uppercase;
+        .heading_container {
+          .country {
+            margin: 0;
+            font-size: 12px;
+            text-transform: uppercase;
+            font-weight: bold;
+            color: #707070;
+          }
+          span {
+            display: flex;
+            align-items: center;
+            margin-top: 36px;
+            font-weight: bold;
+            i {
+              font-size: 36px;
+            }
+            p {
+              margin: 0;
+              margin-left: 16px;
+              text-transform: uppercase;
+            }
+          }
+        }
+        .menu_container {
+          i {}
+        }
       }
     }
 
     .news_item_holder {
       width: 96%;
-      background-color: $tertiary;
       color: $secondary;
       filter: drop-shadow(0 2px 4px $shadow);
       border-radius: 6px;
-      // position: absolute;
       left: 0;
       right: 0;
-      margin: -6em auto 1em auto;
+      margin: -16em auto 1em auto;
       overflow: hidden;
+      max-width: 64em;
 
       app-news-item {
         &:last-child {
@@ -82,13 +104,13 @@
     .bottom_navigation {
       display: flex;
       flex-direction: row;
-      margin: 0 2em;
       padding: 0 2em;
       background-color: $primary;
       color: $secondary;
-      margin: 1em;
       border-radius: 6px;
       justify-content: space-between;
+      width: 58em;
+      margin: 1em auto;
 
       span {
         display: flex;

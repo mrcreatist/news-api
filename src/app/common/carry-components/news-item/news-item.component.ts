@@ -9,6 +9,8 @@ import { Router } from '@angular/router';
 export class NewsItemComponent implements OnInit {
   @HostBinding('class') NewsItemComponentClass = 'app-news-item';
 
+  @Input() miniCard;
+
   @Input() data;
   @Input() getClickEvent;
   @Output() catchClickEvent = new EventEmitter<any>();

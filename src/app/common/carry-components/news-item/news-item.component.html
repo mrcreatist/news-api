@@ -1,17 +1,8 @@
-<div class="news_item">
-    <!-- *ngIf="showPost(post, i)" -->
-  <span (click)="setNewsDetailIntoService()">
-    <img src="{{data.urlToImage === null ? 'assets/default.png' : data.urlToImage}}">
-    <div class="content_holder">
-      <p class="content">{{data.title}}</p>
-      <span class="bottom_section">
-        <p class="source">{{data.source.name}}</p>
-        <p class="publish_date">
-          {{data.publishedAt.split('T')[0].split('-')[0]}}/{{data.publishedAt.split('T')[0].split('-')[1]}}/{{data.publishedAt.split('T')[0].split('-')[2]}}
-        </p>
-      </span>
-    </div>
-  </span>
-  <!-- *ngIf="showPost(post, i)" -->
-  <span  class="bottom-border"></span>
+<div class="news_item" [ngClass]="{'mini_card': miniCard}" (click)="setNewsDetailIntoService()">
+  <img src="{{data.urlToImage === null ? 'assets/default.png' : data.urlToImage}}">
+  <div class="data_container">
+      <!-- | ellipsis: 20 -->
+    <p class="headline">{{data.title}}</p>
+    <p class="source">{{data.source.name}}</p>
+  </div>
 </div>

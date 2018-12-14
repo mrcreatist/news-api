@@ -48,6 +48,9 @@ import { FooterComponent } from './footer/footer.component'                     
     SortPipe,
     // MessagingService
   ],
+  exports: [
+    EllipsisPipe
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

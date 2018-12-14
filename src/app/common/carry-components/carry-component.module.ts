@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NewsItemComponent } from './news-item/news-item.component';
-import { EllipsisPipe } from '../ellipsis';
 import { LoaderComponent } from './loader/loader.component';
 
 @NgModule({

@@ -1,15 +1,24 @@
 <app-loader *ngIf="!showNews"></app-loader>
 
 <div class="news_item_container" *ngIf="showNews">
+
   <div class="content_type_header">
-    <p class="content_text">{{headingTextToShow}}</p>
-    @
-    <p class="content_text">{{country}}</p>
-    <p class="source_text" *ngIf="sourceName !== ''">{{sourceName}}</p>
+    <div class="content_container">
+      <div class="heading_container">
+        <p class="country">India</p>
+        <span>
+          <i class="material-icons">line_style</i>
+          <p>Top Headlines</p>
+        </span>
+      </div>
+      <div class="menu_container">
+        <i class="material-icons">menu</i>
+      </div>
+    </div>
   </div>
 
   <div class="news_item_holder">
-    <app-news-item *ngFor="let post of posts; let i=index" [data]="post"></app-news-item>
+    <app-news-item *ngFor="let post of posts; let i=index" [data]="post" [miniCard]="getMiniCardStatus(i)"></app-news-item>
   </div>
 
   <div class="bottom_navigation">
