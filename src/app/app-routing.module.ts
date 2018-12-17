@@ -10,7 +10,7 @@ const routes: Routes = [
     component: LandingComponent
   },
   {
-    path: 'feed',
+    path: 'feed/:pageType',
     component: FeedComponent
   },
   {

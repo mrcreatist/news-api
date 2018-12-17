@@ -7,9 +7,9 @@
   }
 
   .detail_container {
-    margin-bottom: 6em;
-    width: 60em;
-    margin: -42em auto 0;
+    max-width: 60em;
+    width: 100%;
+    margin: -42em auto 6em;
 
     .back_to_feed_section {
       color: #707070;
@@ -59,6 +59,7 @@
         width: 100%;
         height: auto;
         border-radius: 12px;
+        user-select: none;
         filter: drop-shadow(0 6px 10px #cccccc);
       }
 
@@ -148,6 +149,14 @@
         font-size: 24px;
         background-color: $primary;
         color: $secondary;
+      }
+
+      .card_container {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+
+        justify-content: center;
       }
     }
   }

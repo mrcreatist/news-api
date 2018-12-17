@@ -24,7 +24,9 @@ export class NewsItemComponent implements OnInit {
   }
 
   setNewsDetailIntoService() {
+
     this._newsDetail.setNewsDetail(this.data);
+
     if (this.getClickEvent) {
       this.catchClickEvent.emit({
         clicked: true,

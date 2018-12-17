@@ -1,6 +1,7 @@
 .app-news-item {
   .news_item {
-    max-width: 30em;
+    max-width: 34em;
+    min-height: 18em;
     overflow: hidden;
     background-color: white;
     filter: drop-shadow(0 2px 4px #cccccc);
@@ -14,6 +15,7 @@
       height: 12em;
       object-fit: cover;
       object-position: top;
+      user-select: none;
     }
 
     .data_container {
@@ -40,7 +42,10 @@
   }
 
   .mini_card {
-    width: 14em;
-    min-height: 22em;
+    @media screen and (min-width: $mobile-view){
+      width: 100%;
+      max-width: 16em;
+      min-height: 22em;
+    }
   }
 }

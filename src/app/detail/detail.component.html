@@ -31,11 +31,14 @@
 
   <div class="more_news" *ngIf="!inSearchMode">
     <p class="read_more">Read More</p>
-    <app-news-item
-      *ngFor="let news of moreNews"
-      [data]="news"
-      [getClickEvent]="true"
-      (catchClickEvent)="doIntentOnNewsClick($event)"
-    ></app-news-item>
+    <div class="card_container">
+      <app-news-item
+        *ngFor="let news of moreNews"
+        [data]="news"
+        [miniCard]="true"
+        [getClickEvent]="true"
+        (catchClickEvent)="doIntentOnNewsClick($event)"
+      ></app-news-item>
+    </div>
   </div>
 </div>

@@ -6,7 +6,7 @@ import { Injectable } from '@angular/core';
 export class NewsCarryService {
 
   private newsArray = [];
-  newsToShow = 5;
+  newsToShow = 6;
   newsToCarry = this.newsToShow + 1;
 
   constructor() { }

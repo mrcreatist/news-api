@@ -74,7 +74,7 @@ export class LandingComponent implements OnInit {
   }
 
   gotoFeed() {
-    this._router.navigateByUrl('/feed');
+    this._router.navigateByUrl('/feed/top-headlines');
   }
 
   gotoSocialLink(icon: any) {

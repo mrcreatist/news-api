@@ -5,7 +5,8 @@
 
 @import './assets/library/style/styleLib.scss';
 
-$desktop-view: 800px;
+$desktop-view: 1220px;
+$mobile-view: 620px;
 
 body {
   background-color: $tertiary;
