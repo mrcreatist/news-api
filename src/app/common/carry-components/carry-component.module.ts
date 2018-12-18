@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NewsItemComponent } from './news-item/news-item.component';
 import { LoaderComponent } from './loader/loader.component';
+import { EllipsisPipe } from '../ellipsis';
 
 @NgModule({
   imports: [
@@ -9,11 +10,13 @@ import { LoaderComponent } from './loader/loader.component';
   ],
   declarations: [
     NewsItemComponent,
-    LoaderComponent
+    LoaderComponent,
+    EllipsisPipe
   ],
   exports: [
     NewsItemComponent,
-    LoaderComponent
+    LoaderComponent,
+    EllipsisPipe
   ]
 })
 export class CarryComponentModule { }

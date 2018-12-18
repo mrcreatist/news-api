@@ -1,8 +1,7 @@
 <div class="news_item" [ngClass]="{'mini_card': miniCard}" (click)="setNewsDetailIntoService()">
   <img src="{{data.urlToImage === null ? 'assets/default.png' : data.urlToImage}}">
   <div class="data_container">
-      <!-- | ellipsis: 20 -->
-    <p class="headline">{{data.title}}</p>
+    <p class="headline">{{data.title | ellipsis: 80}}</p>
     <p class="source">{{data.source.name}}</p>
   </div>
 </div>

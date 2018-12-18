@@ -56,7 +56,8 @@ export class FeedComponent implements OnInit {
     // setting up the initial config for the news service
     this._newsParams.newsSource.subscribe(
       (res: any) => {
-        this.headingTextToShow = res.source !== '' ? this.headingText.everything : this.headingText.topHeadline;
+        this.headingTextToShow = res.source !== '' ? this.headingText.everythingText : this.headingText.topHeadlineText;
+
         this.sourceName = res.sourceName;
 
         this.showNews = false;

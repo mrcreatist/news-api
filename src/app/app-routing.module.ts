@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { FeedComponent } from './feed/feed.component';
 import { DetailComponent } from './detail/detail.component';
 import { LandingComponent } from './landing/landing.component';
+import { SearchComponent } from './search/search.component';
 
 const routes: Routes = [
   {
@@ -16,6 +17,10 @@ const routes: Routes = [
   {
     path: 'detail',
     component: DetailComponent
+  },
+  {
+    path: 'search',
+    component: SearchComponent
   },
   {
     path: '**',

@@ -51,7 +51,7 @@ export class DetailComponent implements OnInit {
   }
 
   gotoFeed() {
-    this._router.navigateByUrl('/feed');
+    this._router.navigateByUrl('/feed/top-headlines');
   }
 
   doIntentOnNewsClick(value: any) {

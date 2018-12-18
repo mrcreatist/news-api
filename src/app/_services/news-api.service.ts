@@ -45,6 +45,10 @@ export class NewsApiService {
     this._requestParameter = [];
   }
 
+  public setContentType(value: string) {
+    this._CONTENT_TYPE = value;
+  }
+
   setParam(paramType: string, paramData: any) {
     let count = 0;
     this._requestParameter.filter((parameter: any) => (parameter.type === paramType ? parameter.data = paramData : count++));
