@@ -17,7 +17,8 @@ import { NewsCarryService     } from './_services/news-carry.service'           
 import { LandingComponent     } from './landing/landing.component';
 import { FooterComponent } from './footer/footer.component';
 import { BottomMenuComponent } from './bottom-menu/bottom-menu.component';
-import { SearchComponent } from './search/search.component'                      ;
+import { SearchComponent } from './search/search.component';
+import { AboutComponent } from './about/about.component'                      ;
 
 // import { AngularFireModule } from '@angular/fire';
 // import { MessagingService } from './_services/messaging.service';
@@ -32,7 +33,8 @@ import { SearchComponent } from './search/search.component'                     
     LandingComponent,
     FooterComponent,
     BottomMenuComponent,
-    SearchComponent
+    SearchComponent,
+    AboutComponent
   ],
   imports: [
     BrowserModule,

@@ -1,11 +1,33 @@
 <div class="search_container">
-  <div class="content_type_header">
-    <div class="content_container">
-      <p class="country">India</p>
+  <div class="header_container">
+    <div class="header_content_container">
       <span>
-        <i class="material-icons">line_style</i>
-        <p>asdasd</p>
+        <i class="material-icons">arrow_back</i>
+        <p>Back to last page</p>
       </span>
+
+      <div class="headline_container">
+        <i class="material-icons">search</i>
+        <div class="text_container">
+          <p class="header">Search</p>
+          <p class="subtitle">Let's search like sherlock</p>
+        </div>
+      </div>
+
+      <div class="search_box">
+        <input placeholder="Let's start by simple search" #searchInput>
+        <i class="material-icons" (click)="searchNews(searchInput.value)">search</i>
+      </div>
+
     </div>
+  </div>
+
+  <div class="result_container" *ngIf="searchResult">
+    <app-news-item *ngFor="let result of searchResult" [data]="result" [miniCard]="false"></app-news-item>
+  </div>
+
+  <div class="no_result" *ngIf="searchResult === null">
+    <i class="material-icons">error</i>
+    <p>No Results found</p>
   </div>
 </div>

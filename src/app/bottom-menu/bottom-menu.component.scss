@@ -2,22 +2,44 @@
   .bottom_menu_container {
     display: flex;
     flex-direction: row;
-    justify-content: space-evenly;
+    justify-content: center;
     position: fixed;
     bottom: 0;
     width: 100%;
     filter: drop-shadow(0 2px 4px #cccccc);
+    margin: 12px;
 
     .item {
         background-color: white;
         text-align: center;
         color: black;
-        width: 100%;
+        width: 12%;
         padding: 1em;
+        cursor: pointer;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+
+        i {
+          margin-right: 12px;
+        }
 
         p {
             margin: 0
         }
+
+        &:first-child {
+          border-radius: 6px 0 0 6px;
+        }
+
+        &:last-child {
+          border-radius: 0 6px 6px 0;
+        }
+    }
+
+    .active {
+      background-color: #FFE926;
+      color: black;
     }
   }
 }

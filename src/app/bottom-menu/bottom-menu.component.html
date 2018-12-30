@@ -1,5 +1,5 @@
 <div class="bottom_menu_container">
-  <div *ngFor="let item of menu" class="item">
+  <div *ngFor="let item of menu" class="item" (click)="gotoPage(item)" [ngClass]="{'active': item.active}">
     <i class="material-icons">{{item.icon}}</i>
     <p>{{item.name}}</p>
   </div>
